@@ -1,1 +1,1 @@
-![Wheel Of Fortune UML Image](images/WheelOfFortuneUML.pdf)
+![Wheel Of Fortune UML Image](images/WheelOfFortuneUML.png)
