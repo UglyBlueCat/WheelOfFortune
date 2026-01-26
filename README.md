@@ -1,4 +1,4 @@
-Attempting to use markdown UML :
+Attempting to use markdown UML with https://github.com/plantuml/plantuml :
 
 ```plantuml
 @startuml
