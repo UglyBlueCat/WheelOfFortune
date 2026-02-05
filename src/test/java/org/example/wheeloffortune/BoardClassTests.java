@@ -15,4 +15,9 @@ public class BoardClassTests {
             Assert.state(false, "Board Class does not exist");
         }
     }
+
+    @Test
+    void TestNameVariableExists(){
+        Assert.state((new Board().name = "").isEmpty(), "Board name variable does not exist");
+    }
 }
