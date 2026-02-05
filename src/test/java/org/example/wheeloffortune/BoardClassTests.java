@@ -22,4 +22,11 @@ public class BoardClassTests {
     void TestPlayersVariableExists(){
         Assert.state((new Board().players = new ArrayList<>()).isEmpty(), "Board variable name does not exist");
     }
+
+    @Test
+    void TestPhraseVariableExists(){
+        var x = new Board();
+        x.setPhrase("");
+        Assert.state((x.getPhrase().isEmpty()), "Phrase variable exists");
+    }
 }
