@@ -6,6 +6,7 @@ import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 @SpringBootTest
@@ -63,5 +64,12 @@ public class BoardClassTests {
                 x.getGuessedLetters().equals(s),
                 "Guessed letters variable exists"
         );
+    }
+
+    @Test
+    void TestTableOfPhrasesExists(){
+        var x = new Board();
+        var top = x.getTableOfPhrases();
+        Assert.state(top.equals(new ArrayList<String>()),"Table of phrases variables does not exist");
     }
 }
