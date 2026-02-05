@@ -20,4 +20,9 @@ public class BoardClassTests {
     void TestNameVariableExists(){
         Assert.state((new Board().name = "").isEmpty(), "Board name variable does not exist");
     }
+
+    @Test
+    void TestCurrentPointsVariableExists(){
+        Assert.state(((new Board().currentPoints = 0) >= 0), "Board variable current points does not exist");
+    }
 }
