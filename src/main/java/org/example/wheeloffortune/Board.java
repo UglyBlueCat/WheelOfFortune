@@ -1,3 +1,7 @@
 package org.example.wheeloffortune;
 
-public class Board {}
+import java.util.List;
+
+public class Board {
+    public List<String> players;
+}
