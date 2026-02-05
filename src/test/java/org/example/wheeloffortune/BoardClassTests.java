@@ -6,6 +6,7 @@ import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 
 @SpringBootTest
 public class BoardClassTests {
@@ -39,5 +40,13 @@ public class BoardClassTests {
         System.out.print(c);
         System.out.print(x.getAnonymisedPhrase());
         Assert.state(Arrays.equals(x.getAnonymisedPhrase(), new char[]{c}),"Anonymised phrase variable exists");
+    }
+
+    @Test
+    void TestGuessedLettersVariableExists(){
+        var x = new Board();
+        var s = Set.of('a');
+        x.setGuessedLetters(s);
+        Assert.state(x.getGuessedLetters().equals(s),"Guessed letters variable exists");
     }
 }
