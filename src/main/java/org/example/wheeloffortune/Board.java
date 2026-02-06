@@ -34,6 +34,10 @@ public class Board {
         return true;
     }
 
+    public String generatePhrase(){
+        return "";
+    }
+
     void setPhrase(String s){
         this.phrase = s;
     }
