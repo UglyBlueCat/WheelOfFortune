@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +16,7 @@ public class BoardClassTests {
     @Test
     void TestPlayerClassExists(){
         try {
-            Class.forName(
-                    "org.example.wheeloffortune.Board"
-            );
+            Class.forName("org.example.wheeloffortune.Board");
         } catch (ClassNotFoundException cnfe) {
             Assert.state(
                     false,
@@ -67,9 +66,45 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestTableOfPhrasesExists(){
+    void TestTableOfPhrasesExists() throws ClassNotFoundException {
+        var x = Class.forName("org.example.wheeloffortune.Board");
+        try {
+            Field fieldOfTableOfPhrases = x.getDeclaredField("tableOfPhrases");
+        } catch (NoSuchFieldException e) {
+            Assert.state(
+                    false,
+                    "Table of phrases variables does not exist"
+            );
+        }
+    }
+
+    @Test
+    void TestConfirmTableOfPhrasesContainsSpecifiedList() throws ClassNotFoundException {
         var x = new Board();
-        var top = x.getTableOfPhrases();
-        Assert.state(top.equals(new ArrayList<String>()),"Table of phrases variables does not exist");
+        var testTableOfPhrases =  List.of(new String[]{
+                "A Blessing in Disguise",
+                "Best Seat in the House",
+                "Once in a Blue Moon",
+                "Right Place at the Right Time",
+                "The Early Bird Gets the Worm",
+                "A Piece of Cake",
+                "Living the Dream",
+                "Back to the Drawing Board",
+                "A Breath of Fresh Air",
+                "Making Memories Together"
+        });
+        Assert.notEmpty(
+                x.getTableOfPhrases(),
+                "Table of Phrases is not empty"
+        );
+        Assert.isInstanceOf(
+                List.class,
+                x.getTableOfPhrases(),
+                "Table of Phrases is not a List"
+        );
+        Assert.isTrue(
+                x.getTableOfPhrases().equals(testTableOfPhrases),
+                "Table of Phrases is not set to specified list"
+        );
     }
 }

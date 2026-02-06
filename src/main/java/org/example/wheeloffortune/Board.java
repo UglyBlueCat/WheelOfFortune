@@ -9,7 +9,18 @@ public class Board {
     private String phrase;
     private char[] anonymisedPhrase;
     private Set<Character> guessedLetters;
-    private final List<String> tableOfPhrases = new ArrayList<>();
+    private final List<String> tableOfPhrases = List.of(new String[]{
+            "A Blessing in Disguise",
+            "Best Seat in the House",
+            "Once in a Blue Moon",
+            "Right Place at the Right Time",
+            "The Early Bird Gets the Worm",
+            "A Piece of Cake",
+            "Living the Dream",
+            "Back to the Drawing Board",
+            "A Breath of Fresh Air",
+            "Making Memories Together"
+    });
 
     void setPhrase(String s){
         this.phrase = s;
