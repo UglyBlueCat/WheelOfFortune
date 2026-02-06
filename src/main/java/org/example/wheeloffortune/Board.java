@@ -30,6 +30,10 @@ public class Board {
 
     }
 
+    public boolean checkPhrase(){
+        return true;
+    }
+
     void setPhrase(String s){
         this.phrase = s;
     }

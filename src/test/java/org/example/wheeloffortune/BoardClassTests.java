@@ -130,4 +130,14 @@ public class BoardClassTests {
             Assert.state(false,"Reveal Letter method does not exist");
         }
     }
+
+    @Test
+    void TestConfirmCheckPhraseMethodExists() throws ClassNotFoundException {
+        var x = Class.forName("org.example.wheeloffortune.Board");
+        try {
+            x.getMethod("checkPhrase");
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"Check Phrase method does not exist");
+        }
+    }
 }
