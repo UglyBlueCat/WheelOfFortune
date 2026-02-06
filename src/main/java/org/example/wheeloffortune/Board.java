@@ -26,6 +26,10 @@ public class Board {
         return true;
     }
 
+    public void revealLetter(char c){
+
+    }
+
     void setPhrase(String s){
         this.phrase = s;
     }
