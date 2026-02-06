@@ -22,6 +22,10 @@ public class Board {
             "Making Memories Together"
     });
 
+    public boolean checkLetter(char c){
+        return true;
+    }
+
     void setPhrase(String s){
         this.phrase = s;
     }

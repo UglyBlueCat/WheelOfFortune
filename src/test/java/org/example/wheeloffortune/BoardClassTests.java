@@ -5,10 +5,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.lang.Boolean;
 
 @SpringBootTest
 public class BoardClassTests {
@@ -106,5 +108,16 @@ public class BoardClassTests {
                 x.getTableOfPhrases().equals(testTableOfPhrases),
                 "Table of Phrases is not set to specified list"
         );
+    }
+
+    @Test
+    void TestConfirmCheckLetterMethodExists() throws ClassNotFoundException {
+        var x = Class.forName("org.example.wheeloffortune.Board");
+        try {
+            x.getMethod("checkLetter", Character.TYPE);
+        } catch (NoSuchMethodException e) {
+            System.out.println(e.getMessage());
+            Assert.state(false,"Check Letter method does not exist");
+        }
     }
 }
