@@ -5,6 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.*;
 
 @SpringBootTest
@@ -25,10 +26,11 @@ public class BoardClassTests {
 
     @Test
     void TestPlayersVariableExists() {
-        Assert.state(
-                (new Board().players = Collections.emptyList()).isEmpty(),
-                "Board variable name does not exist"
-        );
+        try {
+            Field field = Board.class.getDeclaredField("players");
+        } catch (NoSuchFieldException e) {
+            Assert.state(false, "Board variable name does not exist");
+        }
     }
 
     @Test
