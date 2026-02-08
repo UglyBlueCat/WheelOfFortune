@@ -21,39 +21,39 @@ public class Board {
             "Making Memories Together"
     });
 
-    public boolean checkLetter(char c){
+    public boolean checkLetter(char c) {
         return true;
     }
 
-    public void revealLetter(char c){
+    public void revealLetter(char c) {
 
     }
 
-    public boolean checkPhrase(){
+    public boolean checkPhrase() {
         return true;
     }
 
-    public String generatePhrase(){
+    public String generatePhrase() {
         return "";
     }
 
-    private String anonymisePhrase(){
+    private String anonymisePhrase() {
         return "";
     }
 
-    void setPhrase(String s){
+    void setPhrase(String s) {
         this.phrase = s;
     }
 
-    void setAnonymisedPhrase(char[] c){
+    void setAnonymisedPhrase(char[] c) {
         this.anonymisedPhrase = c;
     }
 
-    void setGuessedLetters(Set<Character> s){
+    void setGuessedLetters(Set<Character> s) {
         this.guessedLetters = s;
     }
 
-    String getPhrase(){
+    String getPhrase() {
         return this.phrase;
     }
 

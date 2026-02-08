@@ -15,7 +15,7 @@ public class BoardClassTests {
 
 
     @Test
-    void TestPlayerClassExists(){
+    void TestPlayerClassExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
         } catch (ClassNotFoundException cnfe) {
@@ -27,7 +27,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestPlayersVariableExists(){
+    void TestPlayersVariableExists() {
         Assert.state(
                 (new Board().players = new ArrayList<>()).isEmpty(),
                 "Board variable name does not exist"
@@ -35,7 +35,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestPhraseVariableExists(){
+    void TestPhraseVariableExists() {
         var board = new Board();
         board.setPhrase("");
         Assert.state(
@@ -45,7 +45,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestAnonymisedPhraseExists(){
+    void TestAnonymisedPhraseExists() {
         var board = new Board();
         char c = 'a';
         board.setAnonymisedPhrase(new char[]{c});
@@ -56,7 +56,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestGuessedLettersVariableExists(){
+    void TestGuessedLettersVariableExists() {
         var board = new Board();
         var s = Set.of('a');
         board.setGuessedLetters(s);
