@@ -15,10 +15,12 @@ import java.lang.Boolean;
 @SpringBootTest
 public class BoardClassTests {
 
+    private Class<?> board;
+
     @Test
     void TestPlayerClassExists(){
         try {
-            Class.forName("org.example.wheeloffortune.Board");
+            board = Class.forName("org.example.wheeloffortune.Board");
         } catch (ClassNotFoundException cnfe) {
             Assert.state(
                     false,
@@ -37,41 +39,40 @@ public class BoardClassTests {
 
     @Test
     void TestPhraseVariableExists(){
-        var x = new Board();
-        x.setPhrase("");
+        var board = new Board();
+        board.setPhrase("");
         Assert.state(
-                x.getPhrase().isEmpty(),
+                board.getPhrase().isEmpty(),
                 "Phrase variable does not exist"
         );
     }
 
     @Test
     void TestAnonymisedPhraseExists(){
-        var x = new Board();
+        var board = new Board();
         char c = 'a';
-        x.setAnonymisedPhrase(new char[]{c});
+        board.setAnonymisedPhrase(new char[]{c});
         Assert.state(
-                Arrays.equals(x.getAnonymisedPhrase(), new char[]{c}),
+                Arrays.equals(board.getAnonymisedPhrase(), new char[]{c}),
                 "Anonymised phrase variable does not exist"
         );
     }
 
     @Test
     void TestGuessedLettersVariableExists(){
-        var x = new Board();
+        var board = new Board();
         var s = Set.of('a');
-        x.setGuessedLetters(s);
+        board.setGuessedLetters(s);
         Assert.state(
-                x.getGuessedLetters().equals(s),
+                board.getGuessedLetters().equals(s),
                 "Guessed letters variable exists"
         );
     }
 
     @Test
-    void TestTableOfPhrasesExists() throws ClassNotFoundException {
-        var x = Class.forName("org.example.wheeloffortune.Board");
+    void TestTableOfPhrasesExists() {
         try {
-            Field fieldOfTableOfPhrases = x.getDeclaredField("tableOfPhrases");
+            Field fieldOfTableOfPhrases = board.getDeclaredField("tableOfPhrases");
         } catch (NoSuchFieldException e) {
             Assert.state(
                     false,
@@ -81,8 +82,8 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestConfirmTableOfPhrasesContainsSpecifiedList() throws ClassNotFoundException {
-        var x = new Board();
+    void TestConfirmTableOfPhrasesContainsSpecifiedList() {
+        var board = new Board();
         var testTableOfPhrases =  List.of(new String[]{
                 "A Blessing in Disguise",
                 "Best Seat in the House",
@@ -96,25 +97,24 @@ public class BoardClassTests {
                 "Making Memories Together"
         });
         Assert.notEmpty(
-                x.getTableOfPhrases(),
+                board.getTableOfPhrases(),
                 "Table of Phrases is not empty"
         );
         Assert.isInstanceOf(
                 List.class,
-                x.getTableOfPhrases(),
+                board.getTableOfPhrases(),
                 "Table of Phrases is not a List"
         );
         Assert.isTrue(
-                x.getTableOfPhrases().equals(testTableOfPhrases),
+                board.getTableOfPhrases().equals(testTableOfPhrases),
                 "Table of Phrases is not set to specified list"
         );
     }
 
     @Test
-    void TestConfirmCheckLetterMethodExists() throws ClassNotFoundException {
-        var x = Class.forName("org.example.wheeloffortune.Board");
+    void TestConfirmCheckLetterMethodExists() {
         try {
-            x.getMethod("checkLetter", Character.TYPE);
+            board.getMethod("checkLetter", Character.TYPE);
         } catch (NoSuchMethodException e) {
             System.out.println(e.getMessage());
             Assert.state(false,"Check Letter method does not exist");
@@ -122,40 +122,36 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestConfirmRevealLetterMethodExists() throws ClassNotFoundException {
-        var x = Class.forName("org.example.wheeloffortune.Board");
+    void TestConfirmRevealLetterMethodExists() {
         try {
-            x.getMethod("revealLetter", Character.TYPE);
+            board.getMethod("revealLetter", Character.TYPE);
         } catch (NoSuchMethodException e) {
             Assert.state(false,"Reveal Letter method does not exist");
         }
     }
 
     @Test
-    void TestConfirmCheckPhraseMethodExists() throws ClassNotFoundException {
-        var x = Class.forName("org.example.wheeloffortune.Board");
+    void TestConfirmCheckPhraseMethodExists() {
         try {
-            x.getMethod("checkPhrase");
+            board.getMethod("checkPhrase");
         } catch (NoSuchMethodException e) {
             Assert.state(false,"Check Phrase method does not exist");
         }
     }
 
     @Test
-    void TestConfirmGeneratePhraseMethodExists() throws ClassNotFoundException {
-        var x = Class.forName("org.example.wheeloffortune.Board");
+    void TestConfirmGeneratePhraseMethodExists() {
         try {
-            x.getMethod("generatePhrase");
+            board.getMethod("generatePhrase");
         } catch (NoSuchMethodException e) {
             Assert.state(false,"Check Generate Phrase method does not exist");
         }
     }
 
     @Test
-    void TestConfirmAnonymisePhraseMethodExists() throws ClassNotFoundException {
-        var x = Class.forName("org.example.wheeloffortune.Board");
+    void TestConfirmAnonymisePhraseMethodExists() {
         try {
-            x.getMethod("anonymisePhrase");
+            board.getMethod("anonymisePhrase");
         } catch (NoSuchMethodException e) {
             Assert.state(false,"Check Anonymise Phrase method does not exist");
         }
