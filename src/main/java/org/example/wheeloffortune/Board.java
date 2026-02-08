@@ -38,6 +38,10 @@ public class Board {
         return "";
     }
 
+    private String anonymisePhrase(){
+        return "";
+    }
+
     void setPhrase(String s){
         this.phrase = s;
     }
