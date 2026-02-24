@@ -106,4 +106,40 @@ public class PlayerClassTests {
             Assert.state(false,"guessThePhrase() method does not exist");
         }
     }
+
+    @Test
+    void TestMethodStartGame() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("startGame");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"startGame() method does not exist");
+        }
+    }
+
+    @Test
+    void TestMethodStartAgain() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("startAgain");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"startAgain() method does not exist");
+        }
+    }
+
+    @Test
+    void TestMethodGiveUp() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("giveUp");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"giveUp() method does not exist");
+        }
+    }
 }
