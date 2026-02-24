@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
+import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
+import java.util.Objects;
 
 @SpringBootTest
 public class PlayerClassTests {
@@ -22,9 +25,17 @@ public class PlayerClassTests {
     }
 
     @Test
-    void TestNameVariableExists() {
+    void TestNameVariable() {
         try {
             Field field = Player.class.getDeclaredField("name");
+            AnnotatedType fieldAnnotatedType = field.getAnnotatedType();
+            Type fieldType = fieldAnnotatedType.getType();
+            String fieldTypeName = fieldType.getTypeName();
+
+            Assert.state(
+                    Objects.equals(fieldTypeName, "java.lang.String"),
+                    String.format("name field Type should be String but is actually %s", fieldTypeName)
+            );
         } catch (NoSuchFieldException e) {
             Assert.state(
                     false,
