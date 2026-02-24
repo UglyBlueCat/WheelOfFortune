@@ -84,4 +84,26 @@ public class PlayerClassTests {
             Assert.state(false,"pickALetter() method does not exist");
         }
     }
+
+    @Test
+    void TestMethodGuessThePhrase() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            Class[] cArg = new Class[1];
+            cArg[0] = String.class;
+            Method playerGuessThePhrase = player.getMethod("guessThePhrase", cArg);
+            AnnotatedType methodAnnotatedReturnType = playerGuessThePhrase.getAnnotatedReturnType();
+            Type methodReturnType = methodAnnotatedReturnType.getType();
+            String methodTypeName = methodReturnType.getTypeName();
+
+            Assert.state(
+                    Objects.equals(methodTypeName, "boolean"),
+                    String.format("guessThePhrase return Type should be boolean but is actually %s", methodTypeName)
+            );
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"guessThePhrase method does not exist");
+        }
+    }
 }
