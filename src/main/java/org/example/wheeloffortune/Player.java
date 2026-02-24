@@ -7,4 +7,8 @@ public class Player {
     public boolean pickALetter(char c) {
         return true;
     }
+
+    public boolean guessThePhrase(String phrase) {
+        return true;
+    }
 }
