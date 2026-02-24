@@ -4,6 +4,7 @@ public class Player {
     public String name;
     public int currentPoints;
 
-    public void pickALetter(char c) {
+    public boolean pickALetter(char c) {
+        return true;
     }
 }
