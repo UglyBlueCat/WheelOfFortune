@@ -6,6 +6,7 @@ import org.springframework.util.Assert;
 
 import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.Objects;
 
@@ -68,7 +69,16 @@ public class PlayerClassTests {
     void TestMethodPickALetter() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
-            player.getMethod("pickALetter", Character.TYPE);
+            Method playerPickALetter = player.getMethod("pickALetter", Character.TYPE);
+            AnnotatedType methodAnnotatedReturnType = playerPickALetter.getAnnotatedReturnType();
+            Type methodReturnType = methodAnnotatedReturnType.getType();
+            String methodTypeName = methodReturnType.getTypeName();
+            boolean methodReturnsBoolean = Objects.equals(methodTypeName, "boolean");
+
+            Assert.state(
+                    methodReturnsBoolean,
+                    String.format("currentPoints field Type should be boolean but is actually %s", methodTypeName)
+            );
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e) {
