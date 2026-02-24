@@ -76,12 +76,12 @@ public class PlayerClassTests {
 
             Assert.state(
                     Objects.equals(methodTypeName, "boolean"),
-                    String.format("currentPoints field Type should be boolean but is actually %s", methodTypeName)
+                    String.format("pickALetter return Type should be boolean but is actually %s", methodTypeName)
             );
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e) {
-            Assert.state(false,"Pick A Letter method does not exist");
+            Assert.state(false,"pickALetter() method does not exist");
         }
     }
 }
