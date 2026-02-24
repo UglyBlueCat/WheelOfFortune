@@ -63,4 +63,16 @@ public class PlayerClassTests {
             );
         }
     }
+
+    @Test
+    void TestMethodPickALetter() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("pickALetter", Character.TYPE);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"Pick A Letter method does not exist");
+        }
+    }
 }
