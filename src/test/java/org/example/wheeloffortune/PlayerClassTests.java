@@ -73,10 +73,9 @@ public class PlayerClassTests {
             AnnotatedType methodAnnotatedReturnType = playerPickALetter.getAnnotatedReturnType();
             Type methodReturnType = methodAnnotatedReturnType.getType();
             String methodTypeName = methodReturnType.getTypeName();
-            boolean methodReturnsBoolean = Objects.equals(methodTypeName, "boolean");
 
             Assert.state(
-                    methodReturnsBoolean,
+                    Objects.equals(methodTypeName, "boolean"),
                     String.format("currentPoints field Type should be boolean but is actually %s", methodTypeName)
             );
         } catch (ClassNotFoundException e) {
