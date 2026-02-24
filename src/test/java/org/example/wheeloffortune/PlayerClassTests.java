@@ -43,4 +43,24 @@ public class PlayerClassTests {
             );
         }
     }
+
+    @Test
+    void TestCurrentPointsVariable() {
+        try {
+            Field field = Player.class.getDeclaredField("currentPoints");
+            AnnotatedType fieldAnnotatedType = field.getAnnotatedType();
+            Type fieldType = fieldAnnotatedType.getType();
+            String fieldTypeName = fieldType.getTypeName();
+
+            Assert.state(
+                    Objects.equals(fieldTypeName, "int"),
+                    String.format("currentPoints field Type should be int but is actually %s", fieldTypeName)
+            );
+        } catch (NoSuchFieldException e) {
+            Assert.state(
+                    false,
+                    "Player variable currentPoints does not exist"
+            );
+        }
+    }
 }
