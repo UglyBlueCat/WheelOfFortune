@@ -54,8 +54,8 @@ public class PlayerClassTests {
             String fieldTypeName = fieldType.getTypeName();
 
             Assert.state(
-                    Objects.equals(fieldTypeName, "int"),
-                    String.format("currentPoints field Type should be int but is actually %s", fieldTypeName)
+                    Objects.equals(fieldTypeName, "java.lang.Integer"),
+                    String.format("currentPoints field Type should be java.lang.Integer but is actually %s", fieldTypeName)
             );
         } catch (NoSuchFieldException e) {
             Assert.state(

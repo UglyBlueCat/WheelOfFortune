@@ -2,7 +2,7 @@ package org.example.wheeloffortune;
 
 public class Player {
     public String name;
-    public int currentPoints;
+    public Integer currentPoints;
 
     public boolean pickALetter(char c) {
         return true;
