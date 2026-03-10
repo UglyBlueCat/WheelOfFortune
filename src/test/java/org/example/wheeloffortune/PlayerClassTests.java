@@ -14,7 +14,7 @@ import java.util.Objects;
 public class PlayerClassTests {
 
     @Test
-    void TestPlayerClassExists() {
+    void PlayerClassExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
         } catch (ClassNotFoundException cnfe) {
@@ -26,7 +26,19 @@ public class PlayerClassTests {
     }
 
     @Test
-    void TestNameVariable() {
+    void NameVariableExists() {
+        try {
+            Player.class.getDeclaredField("name");
+        } catch (NoSuchFieldException e) {
+            Assert.state(
+                    false,
+                    "Player variable name does not exist"
+            );
+        }
+    }
+
+    @Test
+    void NameVariableIsString() {
         try {
             Field field = Player.class.getDeclaredField("name");
             AnnotatedType fieldAnnotatedType = field.getAnnotatedType();
@@ -46,7 +58,19 @@ public class PlayerClassTests {
     }
 
     @Test
-    void TestCurrentPointsVariable() {
+    void CurrentPointsVariableExists() {
+        try {
+            Player.class.getDeclaredField("currentPoints");
+        } catch (NoSuchFieldException e) {
+            Assert.state(
+                    false,
+                    "Player variable currentPoints does not exist"
+            );
+        }
+    }
+
+    @Test
+    void CurrentPointsVariableIsInteger() {
         try {
             Field field = Player.class.getDeclaredField("currentPoints");
             AnnotatedType fieldAnnotatedType = field.getAnnotatedType();
@@ -66,7 +90,19 @@ public class PlayerClassTests {
     }
 
     @Test
-    void TestMethodPickALetter() {
+    void MethodPickALetterExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("pickALetter", Character.TYPE);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"pickALetter() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodPickALetterReturnsBoolean() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
             Method playerPickALetter = player.getMethod("pickALetter", Character.TYPE);
@@ -86,7 +122,21 @@ public class PlayerClassTests {
     }
 
     @Test
-    void TestMethodGuessThePhrase() {
+    void MethodGuessThePhraseExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            Class[] cArg = new Class[1];
+            cArg[0] = String.class;
+            player.getMethod("guessThePhrase", cArg);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"guessThePhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGuessThePhraseReturnsBoolean() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
             Class[] cArg = new Class[1];
@@ -108,7 +158,7 @@ public class PlayerClassTests {
     }
 
     @Test
-    void TestMethodStartGame() {
+    void MethodStartGameExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
             player.getMethod("startGame");
@@ -120,7 +170,7 @@ public class PlayerClassTests {
     }
 
     @Test
-    void TestMethodStartAgain() {
+    void MethodStartAgainExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
             player.getMethod("startAgain");
@@ -132,7 +182,7 @@ public class PlayerClassTests {
     }
 
     @Test
-    void TestMethodGiveUp() {
+    void MethodGiveUpExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
             player.getMethod("giveUp");
