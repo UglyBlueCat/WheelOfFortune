@@ -14,7 +14,7 @@ import java.util.Objects;
 public class PlayerClassTests {
 
     @Test
-    void PlayerClassExists() {
+    void ClassPlayerExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
         } catch (ClassNotFoundException cnfe) {
@@ -26,7 +26,7 @@ public class PlayerClassTests {
     }
 
     @Test
-    void NameVariableExists() {
+    void VariableNameExists() {
         try {
             Player.class.getDeclaredField("name");
         } catch (NoSuchFieldException e) {
@@ -38,7 +38,7 @@ public class PlayerClassTests {
     }
 
     @Test
-    void NameVariableIsString() {
+    void VariableNameIsString() {
         try {
             Field field = Player.class.getDeclaredField("name");
             AnnotatedType fieldAnnotatedType = field.getAnnotatedType();
@@ -58,7 +58,7 @@ public class PlayerClassTests {
     }
 
     @Test
-    void CurrentPointsVariableExists() {
+    void VariableCurrentPointsExists() {
         try {
             Player.class.getDeclaredField("currentPoints");
         } catch (NoSuchFieldException e) {
@@ -70,7 +70,7 @@ public class PlayerClassTests {
     }
 
     @Test
-    void CurrentPointsVariableIsInteger() {
+    void VariableCurrentPointsIsInteger() {
         try {
             Field field = Player.class.getDeclaredField("currentPoints");
             AnnotatedType fieldAnnotatedType = field.getAnnotatedType();
