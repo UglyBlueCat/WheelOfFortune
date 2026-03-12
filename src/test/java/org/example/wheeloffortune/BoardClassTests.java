@@ -54,7 +54,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestGuessedLettersVariableExists() {
+    void GuessedLettersVariableExists() {
         Board board = new Board();
         Set<Character> letters = Set.of('a');
         board.setGuessedLetters(letters);
@@ -65,7 +65,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestTableOfPhrasesExists() {
+    void TableOfPhrasesExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
             board.getDeclaredField("tableOfPhrases");
@@ -80,7 +80,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestConfirmTableOfPhrasesContainsSpecifiedList() {
+    void ConfirmTableOfPhrasesContainsSpecifiedList() {
         Board board = new Board();
         List<String> testTableOfPhrases =  List.of(new String[]{
                 "A Blessing in Disguise",
@@ -110,7 +110,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestConfirmCheckLetterMethodExists() {
+    void ConfirmCheckLetterMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
             board.getMethod("checkLetter", Character.TYPE);
@@ -123,7 +123,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestConfirmRevealLetterMethodExists() {
+    void ConfirmRevealLetterMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
             board.getMethod("revealLetter", Character.TYPE);
@@ -135,7 +135,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestConfirmCheckPhraseMethodExists() {
+    void ConfirmCheckPhraseMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
             board.getMethod("checkPhrase");
@@ -147,7 +147,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestConfirmGeneratePhraseMethodExists() {
+    void ConfirmGeneratePhraseMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
             board.getMethod("generatePhrase");
@@ -159,7 +159,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestConfirmAnonymisePhraseMethodExists() {
+    void ConfirmAnonymisePhraseMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
             board.getMethod("anonymisePhrase");
