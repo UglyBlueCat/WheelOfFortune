@@ -5,7 +5,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.*;
 
 @SpringBootTest
@@ -13,7 +12,7 @@ public class BoardClassTests {
 
 
     @Test
-    void TestPlayerClassExists() {
+    void BoardClassExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
         } catch (ClassNotFoundException cnfe) {
@@ -25,7 +24,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestPlayersVariableExists() {
+    void PlayersVariableExists() {
         try {
             Field field = Board.class.getDeclaredField("players");
         } catch (NoSuchFieldException e) {
@@ -34,8 +33,8 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestPhraseVariableExists() {
-        var board = new Board();
+    void PhraseVariableExists() {
+        Board board = new Board();
         board.setPhrase("");
         Assert.state(
                 board.getPhrase().isEmpty(),
@@ -44,8 +43,8 @@ public class BoardClassTests {
     }
 
     @Test
-    void TestAnonymisedPhraseExists() {
-        var board = new Board();
+    void AnonymisedPhraseVariableExists() {
+        Board board = new Board();
         char c = 'a';
         board.setAnonymisedPhrase(new char[]{c});
         Assert.state(
@@ -56,11 +55,11 @@ public class BoardClassTests {
 
     @Test
     void TestGuessedLettersVariableExists() {
-        var board = new Board();
-        var s = Set.of('a');
-        board.setGuessedLetters(s);
+        Board board = new Board();
+        Set<Character> letters = Set.of('a');
+        board.setGuessedLetters(letters);
         Assert.state(
-                board.getGuessedLetters().equals(s),
+                board.getGuessedLetters().equals(letters),
                 "Guessed letters variable exists"
         );
     }
@@ -82,8 +81,8 @@ public class BoardClassTests {
 
     @Test
     void TestConfirmTableOfPhrasesContainsSpecifiedList() {
-        var board = new Board();
-        var testTableOfPhrases =  List.of(new String[]{
+        Board board = new Board();
+        List<String> testTableOfPhrases =  List.of(new String[]{
                 "A Blessing in Disguise",
                 "Best Seat in the House",
                 "Once in a Blue Moon",
