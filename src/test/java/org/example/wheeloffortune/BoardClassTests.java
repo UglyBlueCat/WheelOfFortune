@@ -169,4 +169,7 @@ public class BoardClassTests {
             Assert.state(false,"Check Anonymise Phrase method does not exist");
         }
     }
+
+    @Test
+    void CheckLetterMethodCorrectlyChecksLetters() {}
 }
