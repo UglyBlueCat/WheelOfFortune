@@ -169,4 +169,12 @@ public class BoardClassTests {
             Assert.state(false,"Check Anonymise Phrase method does not exist");
         }
     }
+
+    @Test
+    void CheckLetterMethodCorrectlyChecksLetters() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        Assert.state(board.checkLetter('a'), "Board.checkLetter returned false when letter parameter existed in phrase.");
+        Assert.state(!board.checkLetter('b'), "Board.checkLetter returned true when letter parameter did not exist in phrase.");
+    }
 }
