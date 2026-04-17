@@ -22,7 +22,7 @@ public class Board {
     });
 
     public boolean checkLetter(char c) {
-        return true;
+        return phrase.contains(String.valueOf(c));
     }
 
     public void revealLetter(char c) {
