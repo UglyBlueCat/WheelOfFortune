@@ -169,4 +169,14 @@ public class BoardClassTests {
             Assert.state(false,"Check Anonymise Phrase method does not exist");
         }
     }
+
+    @Test
+    void ConfirmGeneratePhraseMethodGeneratesPhrase() {
+        Board board = new Board();
+        List<String> tableOfPhrases = board.getTableOfPhrases();
+        board.generatePhrase();
+        String phrase = board.getPhrase();
+        Assert.state(phrase != null, "phrase is not set");
+        Assert.state(tableOfPhrases.contains(phrase), "phrase is not contained in table of phrases. phrase: "+phrase);
+    }
 }
