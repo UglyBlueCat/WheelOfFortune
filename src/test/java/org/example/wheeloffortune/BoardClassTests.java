@@ -177,4 +177,14 @@ public class BoardClassTests {
         Assert.state(board.checkLetter('a'), "Board.checkLetter returned false when letter parameter existed in phrase.");
         Assert.state(!board.checkLetter('b'), "Board.checkLetter returned true when letter parameter did not exist in phrase.");
     }
+
+    @Test
+    void ConfirmGeneratePhraseMethodGeneratesPhrase() {
+        Board board = new Board();
+        List<String> tableOfPhrases = board.getTableOfPhrases();
+        board.generatePhrase();
+        String phrase = board.getPhrase();
+        Assert.state(phrase != null, "phrase is not set");
+        Assert.state(tableOfPhrases.contains(phrase), "phrase is not contained in table of phrases. phrase: "+phrase);
+    }
 }

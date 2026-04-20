@@ -2,6 +2,7 @@ package org.example.wheeloffortune;
 
 import java.util.List;
 import java.util.Set;
+import java.util.random.RandomGenerator;
 
 public class Board {
     public List<String> players;
@@ -34,7 +35,9 @@ public class Board {
     }
 
     public String generatePhrase() {
-        return "";
+        final int randomIndex = RandomGenerator.getDefault().nextInt(tableOfPhrases.size());
+        phrase = tableOfPhrases.get(randomIndex);
+        return phrase;
     }
 
     private String anonymisePhrase() {
