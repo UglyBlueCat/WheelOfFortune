@@ -1,5 +1,6 @@
 package org.example.wheeloffortune;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.random.RandomGenerator;
@@ -41,7 +42,16 @@ public class Board {
     }
 
     private String anonymisePhrase() {
-        return "";
+        final int phraseLength = phrase.length();
+        char[] localAnonymisedPhrase = new char[phraseLength];
+
+        for (int i = 0; i < phraseLength; i++) {
+            final char currentChar = phrase.charAt(i);
+            localAnonymisedPhrase[i] = currentChar == ' ' || guessedLetters.contains(currentChar) ? currentChar : '*';
+        }
+
+        anonymisedPhrase = localAnonymisedPhrase;
+        return Arrays.toString(localAnonymisedPhrase);
     }
 
     void setPhrase(String s) {
