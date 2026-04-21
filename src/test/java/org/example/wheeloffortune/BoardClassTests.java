@@ -5,6 +5,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 @SpringBootTest
@@ -186,5 +188,31 @@ public class BoardClassTests {
         String phrase = board.getPhrase();
         Assert.state(phrase != null, "phrase is not set");
         Assert.state(tableOfPhrases.contains(phrase), "phrase is not contained in table of phrases. phrase: "+phrase);
+    }
+
+    @Test
+    void AnonymisePhraseMethodAnonymisesPhrase() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        Set<Character> letters = Set.of('a', 'e');
+        board.setGuessedLetters(letters);
+
+        try {
+            Method publicAnonymisePhrase = board.getClass().getDeclaredMethod("anonymisePhrase");
+            publicAnonymisePhrase.setAccessible(true);
+            publicAnonymisePhrase.invoke(board, (Object[]) null);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
+        final char[] anonymisedPhrase = board.getAnonymisedPhrase();
+        final char[] correctlyAnonymisedPhrase = {'*', 'e', '*', '*', ' ', '*', '*', '*', 'a', '*', 'e'};
+        Assert.state(
+                Arrays.equals(anonymisedPhrase, correctlyAnonymisedPhrase),
+                "anonymisedPhrase: " +
+                        Arrays.toString(anonymisedPhrase) +
+                        " correctlyAnonymisedPhrase: " +
+                        Arrays.toString(correctlyAnonymisedPhrase)
+        );
     }
 }
