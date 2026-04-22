@@ -1,6 +1,7 @@
 package org.example.wheeloffortune;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.random.RandomGenerator;
 
@@ -30,8 +31,8 @@ public class Board {
 
     }
 
-    public boolean checkPhrase() {
-        return true;
+    public boolean checkPhrase(String guessedPhrase) {
+        return Objects.equals(guessedPhrase, this.phrase);
     }
 
     public String generatePhrase() {
