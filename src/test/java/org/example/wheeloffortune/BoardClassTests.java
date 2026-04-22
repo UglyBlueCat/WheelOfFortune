@@ -187,4 +187,15 @@ public class BoardClassTests {
         Assert.state(phrase != null, "phrase is not set");
         Assert.state(tableOfPhrases.contains(phrase), "phrase is not contained in table of phrases. phrase: "+phrase);
     }
+
+    @Test
+    void CheckPhraseMethodCorrectlyChecksGuessedPhrase() {
+        Board board = new Board();
+        final String correctTestingPhrase = "Test phrase";
+        final String incorrectTestingPhrase = "Not "+correctTestingPhrase;
+
+        board.setPhrase(correctTestingPhrase);
+        Assert.state(board.checkPhrase(correctTestingPhrase), "Board.checkPhrase returned false when guessed phrase was correct");
+        Assert.state(!board.checkPhrase(incorrectTestingPhrase), "Board.checkPhrase returned true when guessed phrase was incorrect");
+    }
 }
