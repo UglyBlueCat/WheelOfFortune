@@ -187,4 +187,24 @@ public class BoardClassTests {
         Assert.state(phrase != null, "phrase is not set");
         Assert.state(tableOfPhrases.contains(phrase), "phrase is not contained in table of phrases. phrase: "+phrase);
     }
+
+    @Test
+    void RevealLetterMethodUpdatesAnonymisedPhrase() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        board.setGuessedLetters(Set.of('a', 'e'));
+
+        char playerChosenLetter = 's';
+        board.revealLetter(playerChosenLetter);
+
+        Set<Character> testLetters = new HashSet<>(Set.of('a', 'e'));
+        testLetters.add(playerChosenLetter);
+        Set<Character> updatedGuessedLetters = board.getGuessedLetters();
+
+        Assert.state(
+                updatedGuessedLetters.equals(testLetters),
+                "updatedGuessedLetters: "+updatedGuessedLetters +
+                        " is not equal to: "+testLetters
+        );
+    }
 }
