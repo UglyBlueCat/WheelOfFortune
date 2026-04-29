@@ -47,8 +47,8 @@ public class APIControllerTests {
                     assertThat(result.getStatus().value()).isEqualTo(200);
                     assert result.getResponseBody() != null;
                     Assert.state(
-                            result.getResponseBody().contains("<html>"),
-                            "Index page does not contain <html> tag"
+                            result.getResponseBody().contains("<!DOCTYPE HTML>"),
+                            "Index page does not contain <!DOCTYPE HTML> tag"
                     );
                 });
     }
