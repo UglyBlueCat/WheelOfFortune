@@ -43,6 +43,13 @@ public class APIControllerTests {
                 .uri("http://localhost:%d/".formatted(port))
                 .exchange()
                 .expectBody(String.class)
-                .isEqualTo("Default response from Wheel of Fortune");
+                .consumeWith(result -> {
+                    assertThat(result.getStatus().value()).isEqualTo(200);
+                    assert result.getResponseBody() != null;
+                    Assert.state(
+                            result.getResponseBody().contains("<html>"),
+                            "Index page does not contain <html> tag"
+                    );
+                });
     }
 }
