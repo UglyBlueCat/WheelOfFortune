@@ -162,7 +162,7 @@ public class BoardClassTests {
     void ConfirmAnonymisePhraseMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
-            board.getMethod("anonymisePhrase");
+            board.getDeclaredMethod("anonymisePhrase");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e) {
