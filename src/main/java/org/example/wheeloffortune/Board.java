@@ -27,6 +27,10 @@ public class Board {
         return phrase.contains(String.valueOf(c));
     }
 
+    /**
+     * Update the board with the, newly updated, anonymised phrase, after the player has correctly guessed a letter.
+     * @param c The character guessed by the player
+     */
     public void revealLetter(char c) {
         Set<Character> mutableGuessedLetters = new HashSet<>(this.guessedLetters);
         mutableGuessedLetters.add(c);
