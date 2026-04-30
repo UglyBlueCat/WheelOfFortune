@@ -31,6 +31,11 @@ public class Board {
 
     }
 
+    /**
+     * Compare the phrase guessed by the player with the correct phrase
+     * @param guessedPhrase A string containing the phrase guessed by the player
+     * @return A boolean confirming correctness of the guessed phrase
+     */
     public boolean checkPhrase(String guessedPhrase) {
         return Objects.equals(guessedPhrase, this.phrase);
     }
