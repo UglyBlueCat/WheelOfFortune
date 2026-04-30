@@ -32,10 +32,9 @@ public class Board {
      * @param c The character guessed by the player
      */
     public void revealLetter(char c) {
-        Set<Character> mutableGuessedLetters = this.guessedLetters.isEmpty() ? new HashSet<>() : new HashSet<>(this.guessedLetters);
+        Set<Character> mutableGuessedLetters = new HashSet<>(this.guessedLetters);
         mutableGuessedLetters.add(c);
         this.guessedLetters = mutableGuessedLetters;
-        this.anonymisePhrase();
     }
 
     public boolean checkPhrase() {
