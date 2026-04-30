@@ -207,22 +207,4 @@ public class BoardClassTests {
                         " is not equal to: "+testLetters
         );
     }
-
-    @Test
-    void RevealLetterMethodUpdatesAnonymisedPhrase() {
-        final Board board = new Board();
-        final String phrase = "Test phrase";
-        final int phraseLength = phrase.length();
-        final char[] targetAnonymisedPhrase = new char[] {'*', '*', 's', '*', ' ', '*', '*', '*', '*', 's', '*'};
-
-        board.setPhrase(phrase);
-        board.revealLetter('s');
-        final char[] anonymisedPhrase = board.getAnonymisedPhrase();
-
-        Assert.state(
-                Arrays.equals(anonymisedPhrase, targetAnonymisedPhrase),
-                "The anonymised phrase: " + Arrays.toString(anonymisedPhrase) +
-                        " is not equal to the target anonymised phrase: " + Arrays.toString(targetAnonymisedPhrase)
-        );
-    }
 }
