@@ -189,7 +189,7 @@ public class BoardClassTests {
     }
 
     @Test
-    void RevealLetterMethodUpdatesGuessedLetters() {
+    void RevealLetterMethodUpdatesAnonymisedPhrase() {
         Board board = new Board();
         board.setPhrase("Test phrase");
         board.setGuessedLetters(Set.of('a', 'e'));
