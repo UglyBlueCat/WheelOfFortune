@@ -1,6 +1,5 @@
 package org.example.wheeloffortune;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.random.RandomGenerator;
@@ -32,9 +31,7 @@ public class Board {
      * @param c The character guessed by the player
      */
     public void revealLetter(char c) {
-        Set<Character> mutableGuessedLetters = new HashSet<>(this.guessedLetters);
-        mutableGuessedLetters.add(c);
-        this.guessedLetters = mutableGuessedLetters;
+
     }
 
     public boolean checkPhrase() {
