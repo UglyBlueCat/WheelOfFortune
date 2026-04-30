@@ -192,4 +192,20 @@ public class PlayerClassTests {
             Assert.state(false,"giveUp() method does not exist");
         }
     }
+
+    @Test
+    void MethodPickALetterPerformsCorrectly() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        Player player = new Player();
+
+        Assert.state(
+                player.pickALetter('a'),
+                "Player.pickALetter did not return true when letter parameter existed in phrase."
+        );
+        Assert.state(
+                !player.pickALetter('b'),
+                "Player.pickALetter returned true when letter parameter did not exist in phrase."
+        );
+    }
 }
