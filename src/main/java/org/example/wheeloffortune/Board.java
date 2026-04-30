@@ -43,7 +43,7 @@ public class Board {
 
     /**
      * Obfuscate all the letters in the phrase except for those already guessed
-     * @return String The anonymised phrase
+     * @return A string containing the anonymised phrase
      */
     private String anonymisePhrase() {
         final int phraseLength = phrase.length();
