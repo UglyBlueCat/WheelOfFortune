@@ -194,7 +194,7 @@ public class PlayerClassTests {
     }
 
     @Test
-    void MethodPickALetterPerformsCorrectly() {
+    void MethodPickALetterReturnsCorrectBoolean() {
         Board board = new Board();
         board.setPhrase("Test phrase");
         Player player = new Player();
