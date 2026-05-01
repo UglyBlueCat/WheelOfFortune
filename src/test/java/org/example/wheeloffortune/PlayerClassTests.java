@@ -8,6 +8,7 @@ import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.Objects;
 
 @SpringBootTest
@@ -206,6 +207,24 @@ public class PlayerClassTests {
         Assert.state(
                 !player.pickALetter('b'),
                 "Player.pickALetter returned true when letter parameter did not exist in phrase."
+        );
+    }
+
+    @Test
+    void MethodPickALetterCallsAnonymisePhrase() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        Player player = new Player();
+        player.pickALetter('a');
+
+        final char[] anonymisedPhrase = board.getAnonymisedPhrase();
+        final char[] correctlyAnonymisedPhrase = {'*', '*', '*', '*', ' ', '*', '*', '*', 'a', '*', '*'};
+        Assert.state(
+                Arrays.equals(anonymisedPhrase, correctlyAnonymisedPhrase),
+                "The anonymised phrase is being set to: " +
+                        Arrays.toString(anonymisedPhrase) +
+                        " when it should be set to: " +
+                        Arrays.toString(correctlyAnonymisedPhrase)
         );
     }
 }
