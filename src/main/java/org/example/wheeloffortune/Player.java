@@ -14,7 +14,6 @@ public class Player {
      * if so:
      * <ul>
      *     <li>Anonymise the phrase</li>
-     *     <li>Reveal the letter</li>
      * </ul>
      *
      * @param c The letter chosen by the player
