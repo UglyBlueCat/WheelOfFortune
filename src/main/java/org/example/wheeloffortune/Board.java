@@ -37,7 +37,7 @@ public class Board {
      * @return A boolean confirming correctness of the guessed phrase
      */
     public boolean checkPhrase(String guessedPhrase) {
-        return Objects.equals(guessedPhrase, this.phrase);
+        return guessedPhrase.equals(phrase);
     }
 
     public String generatePhrase() {
