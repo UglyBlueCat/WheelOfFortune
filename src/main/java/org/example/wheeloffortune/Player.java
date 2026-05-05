@@ -19,7 +19,7 @@ public class Player {
      * @param c The letter chosen by the player
      * @return A boolean indicating presence of the chosen letter in the phrase
      */
-    public boolean pickALetter(char c) {
+    public boolean pickALetter(Board board, char c) {
         return true;
     }
 
