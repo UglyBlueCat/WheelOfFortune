@@ -20,7 +20,9 @@ public class Player {
      * @return A boolean indicating presence of the chosen letter in the phrase
      */
     public boolean pickALetter(Board board, char c) {
-        return true;
+        boolean letterExistsInPhrase = board.checkLetter(c);
+
+        return letterExistsInPhrase;
     }
 
     public boolean guessThePhrase(String phrase) {
