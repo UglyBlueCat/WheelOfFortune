@@ -23,6 +23,14 @@ public class Board {
             "Making Memories Together"
     });
 
+    /**
+     * <ul><li>Add the letter to guessed letters</li>
+     * <li>Check the letter exists in the phrase</li></ul>
+     * if so:
+     * <ul><li>anonymise the phrase</li></ul>
+     * @param c A character denoting the letter chosen by the player
+     * @return A boolean indicating presence of the chosen letter in the phrase
+     */
     public boolean checkLetter(char c) {
         return phrase.contains(String.valueOf(c));
     }
