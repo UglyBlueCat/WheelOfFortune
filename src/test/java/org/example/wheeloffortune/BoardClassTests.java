@@ -185,6 +185,20 @@ public class BoardClassTests {
     }
 
     @Test
+    void ConfirmBoardStatusMethodReturnsString() {
+        final Board board = new Board();
+        board.setPhrase("Test phrase");
+        final Set<Character> letters = Set.of('a', 'e');
+        board.setGuessedLetters(letters);
+        final Object boardStatusObject = board.boardStatus();
+
+        Assert.state(
+                boardStatusObject.getClass().equals(String.class),
+                "Board.boardStatus() did not return a string"
+        );
+    }
+
+    @Test
     void CheckLetterMethodCorrectlyChecksLetters() {
         Board board = new Board();
         board.setPhrase("Test phrase");
