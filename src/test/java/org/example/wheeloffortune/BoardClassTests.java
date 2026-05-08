@@ -230,6 +230,21 @@ public class BoardClassTests {
     }
 
     @Test
+    void ConfirmBoardStatusMethodReturnsGuessedLetters() {
+        final Board board = new Board();
+        board.setPhrase("Test phrase");
+        final Set<Character> letters = Set.of('a', 'e');
+        board.setGuessedLetters(letters);
+        final String boardStatusJSON = board.boardStatus();
+        final JsonObject boardStatusJsonObject = JsonParser.parseString(boardStatusJSON).getAsJsonObject();
+
+        Assert.state(
+                boardStatusJsonObject.has("AnonymisedPhrase"),
+                "JSON string returned by Board.boardStatus() did not contain an object named AnonymisedPhrase"
+        );
+    }
+
+    @Test
     void CheckLetterMethodCorrectlyChecksLetters() {
         Board board = new Board();
         board.setPhrase("Test phrase");
