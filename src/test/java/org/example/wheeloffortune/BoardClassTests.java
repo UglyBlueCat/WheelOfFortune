@@ -208,6 +208,23 @@ public class BoardClassTests {
     }
 
     @Test
+    void CheckLetterMethodCallsAnonymisePhrase() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        board.checkLetter('a');
+
+        final char[] anonymisedPhrase = board.getAnonymisedPhrase();
+        final char[] correctlyAnonymisedPhrase = {'*', '*', '*', '*', ' ', '*', '*', '*', 'a', '*', '*'};
+        Assert.state(
+                Arrays.equals(anonymisedPhrase, correctlyAnonymisedPhrase),
+                "The anonymised phrase is being set to: " +
+                        Arrays.toString(anonymisedPhrase) +
+                        " when it should be set to: " +
+                        Arrays.toString(correctlyAnonymisedPhrase)
+        );
+    }
+
+    @Test
     void ConfirmGeneratePhraseMethodGeneratesPhrase() {
         Board board = new Board();
         List<String> tableOfPhrases = board.getTableOfPhrases();
