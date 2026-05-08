@@ -1,5 +1,6 @@
 package org.example.wheeloffortune;
 
+import com.google.gson.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
@@ -195,6 +196,21 @@ public class BoardClassTests {
         Assert.state(
                 boardStatusObject.getClass().equals(String.class),
                 "Board.boardStatus() did not return a string"
+        );
+    }
+
+    @Test
+    void ConfirmBoardStatusMethodReturnsJSON() {
+        final Board board = new Board();
+        board.setPhrase("Test phrase");
+        final Set<Character> letters = Set.of('a', 'e');
+        board.setGuessedLetters(letters);
+        final String boardStatusJSON = board.boardStatus();
+        final JsonObject boardStatusJsonObject = JsonParser.parseString(boardStatusJSON).getAsJsonObject();
+
+        Assert.state(
+                boardStatusJsonObject.isJsonObject(),
+                "Board.boardStatus() did not return a valid JSON string"
         );
     }
 
