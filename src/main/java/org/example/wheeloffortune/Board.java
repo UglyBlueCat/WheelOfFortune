@@ -1,6 +1,7 @@
 package org.example.wheeloffortune;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.random.RandomGenerator;
@@ -32,6 +33,10 @@ public class Board {
      * @return A boolean indicating presence of the chosen letter in the phrase
      */
     public boolean checkLetter(char c) {
+        Set<Character> mutableGuessedLetters = new HashSet<>(this.getGuessedLetters());
+        mutableGuessedLetters.add(c);
+        this.setGuessedLetters(mutableGuessedLetters);
+
         return phrase.contains(String.valueOf(c));
     }
 
