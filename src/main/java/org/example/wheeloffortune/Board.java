@@ -42,7 +42,9 @@ public class Board {
             this.setGuessedLetters(mutableGuessedLetters);
         }
 
-        return phrase.contains(String.valueOf(c));
+        final boolean letterExists = this.phrase.contains(String.valueOf(c));
+        if (letterExists) this.anonymisePhrase();
+        return letterExists;
     }
 
     public void revealLetter(char c) {
