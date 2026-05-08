@@ -33,9 +33,14 @@ public class Board {
      * @return A boolean indicating presence of the chosen letter in the phrase
      */
     public boolean checkLetter(char c) {
-        Set<Character> mutableGuessedLetters = new HashSet<>(this.getGuessedLetters());
-        mutableGuessedLetters.add(c);
-        this.setGuessedLetters(mutableGuessedLetters);
+        Set<Character> guessedLetters = this.getGuessedLetters();
+        if (guessedLetters == null || guessedLetters.isEmpty()) {
+            this.setGuessedLetters(Set.of(c));
+        } else {
+            Set<Character> mutableGuessedLetters = new HashSet<>(guessedLetters);
+            mutableGuessedLetters.add(c);
+            this.setGuessedLetters(mutableGuessedLetters);
+        }
 
         return phrase.contains(String.valueOf(c));
     }
