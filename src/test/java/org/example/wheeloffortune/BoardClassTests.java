@@ -176,8 +176,14 @@ public class BoardClassTests {
     void CheckLetterMethodCorrectlyChecksLetters() {
         Board board = new Board();
         board.setPhrase("Test phrase");
-        Assert.state(board.checkLetter('a'), "Board.checkLetter returned false when letter parameter existed in phrase.");
-        Assert.state(!board.checkLetter('b'), "Board.checkLetter returned true when letter parameter did not exist in phrase.");
+        Assert.state(
+                board.checkLetter('a'),
+                "Board.checkLetter returned false when letter parameter existed in phrase."
+        );
+        Assert.state(
+                !board.checkLetter('b'),
+                "Board.checkLetter returned true when letter parameter did not exist in phrase."
+        );
     }
 
     @Test
