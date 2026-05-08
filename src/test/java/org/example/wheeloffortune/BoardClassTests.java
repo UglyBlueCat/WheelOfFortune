@@ -187,6 +187,27 @@ public class BoardClassTests {
     }
 
     @Test
+    void CheckLetterMethodAddsLetterToGuessedLetters() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        board.setGuessedLetters(Set.of('a', 'e'));
+
+        final char playerChosenLetter = 's';
+        board.checkLetter(playerChosenLetter);
+
+        Set<Character> testLetters = new HashSet<>(Set.of('a', 'e'));
+        testLetters.add(playerChosenLetter);
+        Set<Character> updatedGuessedLetters = board.getGuessedLetters();
+
+        Assert.state(
+                updatedGuessedLetters.equals(testLetters),
+                "Board.checkLetter did not add the letter to guessed letters." +
+                        " The updated guessed letters: " + updatedGuessedLetters +
+                        " is not equal to: " + testLetters
+        );
+    }
+
+    @Test
     void ConfirmGeneratePhraseMethodGeneratesPhrase() {
         Board board = new Board();
         List<String> tableOfPhrases = board.getTableOfPhrases();
