@@ -203,11 +203,11 @@ public class PlayerClassTests {
         Player player = new Player();
 
         Assert.state(
-                player.pickALetter('a'),
+                player.pickALetter(board, 'a'),
                 "Player.pickALetter did not return true when letter parameter existed in phrase."
         );
         Assert.state(
-                !player.pickALetter('b'),
+                !player.pickALetter(board, 'b'),
                 "Player.pickALetter returned true when letter parameter did not exist in phrase."
         );
     }
