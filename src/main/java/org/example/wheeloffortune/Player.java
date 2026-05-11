@@ -6,6 +6,7 @@ public class Player {
 
     /**
      * When the player picks a letter:
+     * Call Board.checkLetter() wich performs the following:
      * <ul>
      *     <li>Add the letter to guessed letters</li>
      *     <li>Check the letter exists in the phrase</li>
