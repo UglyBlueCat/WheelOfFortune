@@ -108,7 +108,10 @@ public class PlayerClassTests {
     void MethodPickALetterReturnsBoolean() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
-            Method playerPickALetter = player.getMethod("pickALetter", Character.TYPE);
+            Class<?>[] cArg = new Class[2];
+            cArg[0] = Board.class;
+            cArg[1] = Character.TYPE;
+            Method playerPickALetter = player.getMethod("pickALetter", cArg);
             AnnotatedType methodAnnotatedReturnType = playerPickALetter.getAnnotatedReturnType();
             Type methodReturnType = methodAnnotatedReturnType.getType();
             String methodTypeName = methodReturnType.getTypeName();
