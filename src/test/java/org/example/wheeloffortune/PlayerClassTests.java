@@ -93,7 +93,10 @@ public class PlayerClassTests {
     void MethodPickALetterExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
-            player.getMethod("pickALetter", Character.TYPE);
+            Class<?>[] cArg = new Class[2];
+            cArg[0] = Board.class;
+            cArg[1] = Character.TYPE;
+            player.getMethod("pickALetter", cArg);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e) {
