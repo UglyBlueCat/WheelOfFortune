@@ -238,7 +238,7 @@ public class PlayerClassTests {
 
         char playerChosenLetter = 's';
         Player player = new Player();
-        player.pickALetter(board, playerChosenLetter);
+        player.pickALetter(board, 'a');
 
         Set<Character> testLetters = new HashSet<>(Set.of('a', 'e'));
         testLetters.add(playerChosenLetter);
