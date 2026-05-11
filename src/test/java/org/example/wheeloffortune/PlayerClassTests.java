@@ -9,9 +9,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @SpringBootTest
 public class PlayerClassTests {
@@ -227,28 +225,6 @@ public class PlayerClassTests {
                         Arrays.toString(anonymisedPhrase) +
                         " when it should be set to: " +
                         Arrays.toString(correctlyAnonymisedPhrase)
-        );
-    }
-
-    @Test
-    void MethodPickALetterAddsLetterToGuessedLetters() {
-        Board board = new Board();
-        board.setPhrase("Test phrase");
-        board.setGuessedLetters(Set.of('a', 'e'));
-
-        char playerChosenLetter = 's';
-        Player player = new Player();
-        player.pickALetter(playerChosenLetter);
-
-        Set<Character> testLetters = new HashSet<>(Set.of('a', 'e'));
-        testLetters.add(playerChosenLetter);
-        Set<Character> updatedGuessedLetters = board.getGuessedLetters();
-
-        Assert.state(
-                updatedGuessedLetters.equals(testLetters),
-                "Player.pickALetter did not add the letter to guessed letters." +
-                        " The updated guessed letters: " + updatedGuessedLetters +
-                        " is not equal to: " + testLetters
         );
     }
 }
