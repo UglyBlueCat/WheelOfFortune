@@ -203,11 +203,11 @@ public class PlayerClassTests {
         Player player = new Player();
 
         Assert.state(
-                player.pickALetter(board, 'a'),
+                player.pickALetter('a'),
                 "Player.pickALetter did not return true when letter parameter existed in phrase."
         );
         Assert.state(
-                !player.pickALetter(board, 'b'),
+                !player.pickALetter('b'),
                 "Player.pickALetter returned true when letter parameter did not exist in phrase."
         );
     }
@@ -217,7 +217,7 @@ public class PlayerClassTests {
         Board board = new Board();
         board.setPhrase("Test phrase");
         Player player = new Player();
-        player.pickALetter(board, 'a');
+        player.pickALetter('a');
 
         final char[] anonymisedPhrase = board.getAnonymisedPhrase();
         final char[] correctlyAnonymisedPhrase = {'*', '*', '*', '*', ' ', '*', '*', '*', 'a', '*', '*'};
@@ -238,7 +238,7 @@ public class PlayerClassTests {
 
         char playerChosenLetter = 's';
         Player player = new Player();
-        player.pickALetter(board, 'a');
+        player.pickALetter(playerChosenLetter);
 
         Set<Character> testLetters = new HashSet<>(Set.of('a', 'e'));
         testLetters.add(playerChosenLetter);
