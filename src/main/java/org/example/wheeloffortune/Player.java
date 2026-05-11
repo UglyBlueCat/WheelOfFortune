@@ -1,8 +1,5 @@
 package org.example.wheeloffortune;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Player {
     public String name;
     public Integer currentPoints;
@@ -23,10 +20,6 @@ public class Player {
      * @return A boolean indicating presence of the chosen letter in the phrase
      */
     public boolean pickALetter(Board board, char c) {
-        Set<Character> mutableGuessedLetters = new HashSet<>(board.getGuessedLetters());
-        mutableGuessedLetters.add(c);
-        board.setGuessedLetters(mutableGuessedLetters);
-
         boolean letterExistsInPhrase = board.checkLetter(c);
 
         return letterExistsInPhrase;
