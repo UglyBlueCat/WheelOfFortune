@@ -1,6 +1,7 @@
 package org.example.wheeloffortune;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.random.RandomGenerator;
@@ -23,8 +24,27 @@ public class Board {
             "Making Memories Together"
     });
 
+    /**
+     * <ul><li>Add the letter to guessed letters</li>
+     * <li>Check the letter exists in the phrase</li></ul>
+     * if so:
+     * <ul><li>anonymise the phrase</li></ul>
+     * @param c A character denoting the letter chosen by the player
+     * @return A boolean indicating presence of the chosen letter in the phrase
+     */
     public boolean checkLetter(char c) {
-        return phrase.contains(String.valueOf(c));
+        Set<Character> guessedLetters = this.getGuessedLetters();
+        if (guessedLetters == null || guessedLetters.isEmpty()) {
+            this.setGuessedLetters(Set.of(c));
+        } else {
+            Set<Character> mutableGuessedLetters = new HashSet<>(guessedLetters);
+            mutableGuessedLetters.add(c);
+            this.setGuessedLetters(mutableGuessedLetters);
+        }
+
+        final boolean letterExists = this.phrase.contains(String.valueOf(c));
+        if (letterExists) this.anonymisePhrase();
+        return letterExists;
     }
 
     public void revealLetter(char c) {

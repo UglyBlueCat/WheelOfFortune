@@ -176,8 +176,53 @@ public class BoardClassTests {
     void CheckLetterMethodCorrectlyChecksLetters() {
         Board board = new Board();
         board.setPhrase("Test phrase");
-        Assert.state(board.checkLetter('a'), "Board.checkLetter returned false when letter parameter existed in phrase.");
-        Assert.state(!board.checkLetter('b'), "Board.checkLetter returned true when letter parameter did not exist in phrase.");
+        Assert.state(
+                board.checkLetter('a'),
+                "Board.checkLetter returned false when letter parameter existed in phrase."
+        );
+        Assert.state(
+                !board.checkLetter('b'),
+                "Board.checkLetter returned true when letter parameter did not exist in phrase."
+        );
+    }
+
+    @Test
+    void CheckLetterMethodAddsLetterToGuessedLetters() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        final Set<Character> samplePhraseLetters = Set.of('a', 'e');
+        board.setGuessedLetters(samplePhraseLetters);
+
+        final char playerChosenLetter = 's';
+        board.checkLetter(playerChosenLetter);
+
+        Set<Character> preUpdatedGuessedLetters = new HashSet<>(samplePhraseLetters);
+        preUpdatedGuessedLetters.add(playerChosenLetter);
+        Set<Character> updatedGuessedLetters = board.getGuessedLetters();
+
+        Assert.state(
+                updatedGuessedLetters.equals(preUpdatedGuessedLetters),
+                "Board.checkLetter did not add the letter to guessed letters." +
+                        " The updated guessed letters: " + updatedGuessedLetters +
+                        " is not equal to: " + preUpdatedGuessedLetters
+        );
+    }
+
+    @Test
+    void CheckLetterMethodCallsAnonymisePhrase() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        board.checkLetter('a');
+
+        final char[] anonymisedPhrase = board.getAnonymisedPhrase();
+        final char[] correctlyAnonymisedPhrase = {'*', '*', '*', '*', ' ', '*', '*', '*', 'a', '*', '*'};
+        Assert.state(
+                Arrays.equals(anonymisedPhrase, correctlyAnonymisedPhrase),
+                "The anonymised phrase is being set to: " +
+                        Arrays.toString(anonymisedPhrase) +
+                        " when it should be set to: " +
+                        Arrays.toString(correctlyAnonymisedPhrase)
+        );
     }
 
     @Test
