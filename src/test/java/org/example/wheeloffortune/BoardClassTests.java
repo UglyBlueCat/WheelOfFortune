@@ -190,20 +190,21 @@ public class BoardClassTests {
     void CheckLetterMethodAddsLetterToGuessedLetters() {
         Board board = new Board();
         board.setPhrase("Test phrase");
-        board.setGuessedLetters(Set.of('a', 'e'));
+        final Set<Character> samplePhraseLetters = Set.of('a', 'e');
+        board.setGuessedLetters(samplePhraseLetters);
 
         final char playerChosenLetter = 's';
         board.checkLetter(playerChosenLetter);
 
-        Set<Character> testLetters = new HashSet<>(Set.of('a', 'e'));
-        testLetters.add(playerChosenLetter);
+        Set<Character> preUpdatedGuessedLetters = new HashSet<>(samplePhraseLetters);
+        preUpdatedGuessedLetters.add(playerChosenLetter);
         Set<Character> updatedGuessedLetters = board.getGuessedLetters();
 
         Assert.state(
-                updatedGuessedLetters.equals(testLetters),
+                updatedGuessedLetters.equals(preUpdatedGuessedLetters),
                 "Board.checkLetter did not add the letter to guessed letters." +
                         " The updated guessed letters: " + updatedGuessedLetters +
-                        " is not equal to: " + testLetters
+                        " is not equal to: " + preUpdatedGuessedLetters
         );
     }
 
