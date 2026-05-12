@@ -93,7 +93,10 @@ public class PlayerClassTests {
     void MethodPickALetterExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
-            player.getMethod("pickALetter", Character.TYPE);
+            Class<?>[] cArg = new Class[2];
+            cArg[0] = Board.class;
+            cArg[1] = Character.TYPE;
+            player.getMethod("pickALetter", cArg);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e) {
@@ -105,7 +108,10 @@ public class PlayerClassTests {
     void MethodPickALetterReturnsBoolean() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
-            Method playerPickALetter = player.getMethod("pickALetter", Character.TYPE);
+            Class<?>[] cArg = new Class[2];
+            cArg[0] = Board.class;
+            cArg[1] = Character.TYPE;
+            Method playerPickALetter = player.getMethod("pickALetter", cArg);
             AnnotatedType methodAnnotatedReturnType = playerPickALetter.getAnnotatedReturnType();
             Type methodReturnType = methodAnnotatedReturnType.getType();
             String methodTypeName = methodReturnType.getTypeName();
@@ -191,5 +197,21 @@ public class PlayerClassTests {
         } catch (NoSuchMethodException e) {
             Assert.state(false,"giveUp() method does not exist");
         }
+    }
+
+    @Test
+    void MethodPickALetterReturnsCorrectBoolean() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        Player player = new Player();
+
+        Assert.state(
+                player.pickALetter(board, 'a'),
+                "Player.pickALetter did not return true when letter parameter existed in phrase."
+        );
+        Assert.state(
+                !player.pickALetter(board, 'b'),
+                "Player.pickALetter returned true when letter parameter did not exist in phrase."
+        );
     }
 }
