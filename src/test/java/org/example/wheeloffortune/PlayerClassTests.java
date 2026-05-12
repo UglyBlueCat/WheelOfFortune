@@ -240,4 +240,26 @@ public class PlayerClassTests {
             Assert.state(false,"setCurrentPoints() method does not exist");
         }
     }
+
+    @Test
+    void variableGetSetNameGetsAndSets() {
+        final String sampleName = "Jimmy McJimmy";
+        final Player player = new Player();
+        player.setName(sampleName);
+        Assert.state(
+                sampleName.equals(player.getName()),
+                "The value set by Player.setName() was not the same as the value then returned by Player.getName()"
+        );
+    }
+
+    @Test
+    void variableGetSetCurrentPointsGetsAndSets() {
+        final Integer samplePoints = 3;
+        final Player player = new Player();
+        player.setCurrentPoints(samplePoints);
+        Assert.state(
+                samplePoints.equals(player.getCurrentPoints()),
+                "The value set by Player.setCurrentPoints() was not the same as the value then returned by Player.getCurrentPoints()"
+        );
+    }
 }
