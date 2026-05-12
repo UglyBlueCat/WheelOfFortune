@@ -192,4 +192,52 @@ public class PlayerClassTests {
             Assert.state(false,"giveUp() method does not exist");
         }
     }
+
+    @Test
+    void MethodGetNameExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("getName");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getName() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetNameExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("setName", String.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setName() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetCurrentPointsExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("getCurrentPoints");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getCurrentPoints() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetCurrentPointsExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("setCurrentPoints", Integer.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setCurrentPoints() method does not exist");
+        }
+    }
 }
