@@ -79,7 +79,7 @@ public class Board {
     }
 
     public void setupBoard() {
-
+        this.generatePhrase();
     }
 
     void setPhrase(String s) {
