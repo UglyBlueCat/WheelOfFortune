@@ -188,6 +188,18 @@ public class BoardClassTests {
     }
 
     @Test
+    void ConfirmSetupBoardMethodSetsPhrase() {
+        final Board board = new Board();
+        board.setupBoard();
+        final String phrase = board.getPhrase();
+
+        Assert.state(
+                phrase != null && !phrase.isEmpty(),
+                "Setup board method did not generate the phrase"
+        );
+    }
+
+    @Test
     void CheckLetterMethodCorrectlyChecksLetters() {
         Board board = new Board();
         board.setPhrase("Test phrase");
