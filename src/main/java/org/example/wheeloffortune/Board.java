@@ -78,6 +78,10 @@ public class Board {
         return Arrays.toString(localAnonymisedPhrase);
     }
 
+    public void setupBoard() {
+
+    }
+
     void setPhrase(String s) {
         this.phrase = s;
     }
