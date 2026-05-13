@@ -173,6 +173,21 @@ public class BoardClassTests {
     }
 
     @Test
+    void ConfirmSetupBoardMethodExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getDeclaredMethod("setupBoard");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(
+                false,
+                "Setup board method does not exist"
+            );
+        }
+    }
+
+    @Test
     void CheckLetterMethodCorrectlyChecksLetters() {
         Board board = new Board();
         board.setPhrase("Test phrase");
