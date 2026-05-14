@@ -190,6 +190,13 @@ public class BoardClassTests {
                         " The updated guessed letters: " + updatedGuessedLetters +
                         " should not be equal to: " + samplePhraseLetters
         );
+
+        Assert.state(
+                updatedGuessedLetters.isEmpty(),
+                "Board.endGame() did not reset guessed letters." +
+                        " The updated guessed letters: " + updatedGuessedLetters +
+                        " should be empty."
+        );
     }
 
     @Test
