@@ -93,7 +93,7 @@ public class Board {
     }
 
     public void endGame() {
-
+        this.setGuessedLetters(Set.of());
     }
 
     void setAnonymisedPhrase(char[] c) {
