@@ -84,6 +84,10 @@ public class Board {
         return Arrays.toString(localAnonymisedPhrase);
     }
 
+    public void setupBoard() {
+        this.generatePhrase();
+    }
+
     void setPhrase(String s) {
         this.phrase = s;
     }
