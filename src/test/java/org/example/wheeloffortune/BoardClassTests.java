@@ -292,9 +292,9 @@ public class BoardClassTests {
         final char[] correctlyAnonymisedPhrase = {'*', 'e', '*', '*', ' ', '*', '*', '*', 'a', '*', 'e'};
         Assert.state(
                 Arrays.equals(anonymisedPhrase, correctlyAnonymisedPhrase),
-                "anonymisedPhrase: " +
+                "The anonymised phrase is being set to: " +
                         Arrays.toString(anonymisedPhrase) +
-                        " correctlyAnonymisedPhrase: " +
+                        " when it should be set to: " +
                         Arrays.toString(correctlyAnonymisedPhrase)
         );
     }
