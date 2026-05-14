@@ -3,6 +3,7 @@ package org.example.wheeloffortune;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.random.RandomGenerator;
 
@@ -51,8 +52,13 @@ public class Board {
 
     }
 
-    public boolean checkPhrase() {
-        return true;
+    /**
+     * Compare the phrase guessed by the player with the correct phrase
+     * @param guessedPhrase A string containing the phrase guessed by the player
+     * @return A boolean confirming correctness of the guessed phrase
+     */
+    public boolean checkPhrase(String guessedPhrase) {
+        return guessedPhrase.equals(phrase);
     }
 
     public String generatePhrase() {
