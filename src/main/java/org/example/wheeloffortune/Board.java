@@ -95,6 +95,7 @@ public class Board {
     public void endGame() {
         this.setGuessedLetters(Set.of());
         this.setPhrase("");
+        this.anonymisePhrase();
     }
 
     void setAnonymisedPhrase(char[] c) {
