@@ -200,6 +200,23 @@ public class BoardClassTests {
     }
 
     @Test
+    void ConfirmEndGameMethodResetsAnonymisedPhrase() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+        board.checkLetter('a');
+
+        board.endGame();
+        final char[] anonymisedPhrase = board.getAnonymisedPhrase();
+
+        Assert.state(
+                anonymisedPhrase.length == 0,
+                "Board.endGame() did not reset anonymisedPhrase." +
+                        " The updated anonymisedPhrase: " + Arrays.toString(anonymisedPhrase) +
+                        " should be empty."
+        );
+    }
+
+    @Test
     void ConfirmAnonymisePhraseMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
