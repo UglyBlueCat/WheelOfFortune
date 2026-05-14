@@ -92,6 +92,10 @@ public class Board {
         this.phrase = s;
     }
 
+    public void endGame() {
+
+    }
+
     void setAnonymisedPhrase(char[] c) {
         this.anonymisedPhrase = c;
     }
