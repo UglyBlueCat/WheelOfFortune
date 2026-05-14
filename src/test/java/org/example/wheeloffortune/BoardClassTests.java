@@ -200,6 +200,22 @@ public class BoardClassTests {
     }
 
     @Test
+    void ConfirmEndGameMethodResetsPhrase() {
+        Board board = new Board();
+        board.setPhrase("Test phrase");
+
+        board.endGame();
+        final String phrase = board.getPhrase();
+
+        Assert.state(
+                phrase.isEmpty(),
+                "Board.endGame() did not reset phrase." +
+                        " The updated phrase: " + phrase +
+                        " should be empty."
+        );
+    }
+
+    @Test
     void ConfirmEndGameMethodResetsAnonymisedPhrase() {
         Board board = new Board();
         board.setPhrase("Test phrase");
