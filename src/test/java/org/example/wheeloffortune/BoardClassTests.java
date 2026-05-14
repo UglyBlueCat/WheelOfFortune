@@ -161,6 +161,21 @@ public class BoardClassTests {
     }
 
     @Test
+    void ConfirmEndGameMethodExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getDeclaredMethod("endGame");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(
+                    false,
+                    "End game method does not exist"
+            );
+        }
+    }
+
+    @Test
     void ConfirmAnonymisePhraseMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
