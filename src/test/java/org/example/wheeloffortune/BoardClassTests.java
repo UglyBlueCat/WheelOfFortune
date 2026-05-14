@@ -176,6 +176,23 @@ public class BoardClassTests {
     }
 
     @Test
+    void ConfirmEndGameMethodResetsGuessedLetters() {
+        final Board board = new Board();
+        final Set<Character> samplePhraseLetters = Set.of('a', 'e');
+        board.setGuessedLetters(samplePhraseLetters);
+
+        board.endGame();
+        final Set<Character> updatedGuessedLetters = board.getGuessedLetters();
+
+        Assert.state(
+                !updatedGuessedLetters.equals(samplePhraseLetters),
+                "Board.endGame() did not reset guessed letters." +
+                        " The updated guessed letters: " + updatedGuessedLetters +
+                        " should not be equal to: " + samplePhraseLetters
+        );
+    }
+
+    @Test
     void ConfirmAnonymisePhraseMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
