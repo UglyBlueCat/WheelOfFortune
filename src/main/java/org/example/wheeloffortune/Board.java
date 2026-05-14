@@ -92,6 +92,11 @@ public class Board {
         this.phrase = s;
     }
 
+    /**
+     * Ends the game
+     * <ul><li>Clears the board</li>
+     * <li>Resets guessed letters</li></ul>
+     */
     public void endGame() {
         this.setGuessedLetters(Set.of());
         this.setPhrase("");
