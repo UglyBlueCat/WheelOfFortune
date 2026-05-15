@@ -25,7 +25,7 @@ public class Player {
     }
 
     public boolean guessThePhrase(Board board, String phrase) {
-        return true;
+        return board.checkPhrase(phrase);
     }
 
     public void startGame() {
