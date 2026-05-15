@@ -166,6 +166,24 @@ public class PlayerClassTests {
     }
 
     @Test
+    void CheckGuessThePhraseMethodReturnsCorrectBoolean() {
+        final Board board = new Board();
+        final String correctTestingPhrase = "Test phrase";
+        final String incorrectTestingPhrase = "Not "+correctTestingPhrase;
+        board.setPhrase(correctTestingPhrase);
+        final Player player = new Player();
+
+        Assert.state(
+                player.guessThePhrase(board, correctTestingPhrase),
+                "Player.guessThePhrase returned false when guessed phrase was correct"
+        );
+        Assert.state(
+                !player.guessThePhrase(board, incorrectTestingPhrase),
+                "Player.guessThePhrase returned true when guessed phrase was incorrect"
+        );
+    }
+
+    @Test
     void MethodStartGameExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
