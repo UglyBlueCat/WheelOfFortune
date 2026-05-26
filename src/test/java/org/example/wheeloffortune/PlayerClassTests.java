@@ -102,6 +102,26 @@ public class PlayerClassTests {
     }
 
     @Test
+    void VariableBoardIsBoard() {
+        try {
+            Field field = Player.class.getDeclaredField("board");
+            AnnotatedType fieldAnnotatedType = field.getAnnotatedType();
+            Type fieldType = fieldAnnotatedType.getType();
+            String fieldTypeName = fieldType.getTypeName();
+
+            Assert.state(
+                    Objects.equals(fieldTypeName, "org.example.wheeloffortune.Board"),
+                    String.format("board field Type should be org.example.wheeloffortune.Board but is actually %s", fieldTypeName)
+            );
+        } catch (NoSuchFieldException e) {
+            Assert.state(
+                    false,
+                    "Player variable board does not exist"
+            );
+        }
+    }
+
+    @Test
     void MethodPickALetterExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
