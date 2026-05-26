@@ -56,4 +56,13 @@ public class Player {
     public void setCurrentPoints(Integer currentPoints) {
         this.currentPoints = currentPoints;
     }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
 }
