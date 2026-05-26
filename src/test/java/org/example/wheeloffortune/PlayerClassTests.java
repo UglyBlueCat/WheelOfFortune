@@ -90,6 +90,18 @@ public class PlayerClassTests {
     }
 
     @Test
+    void VariableBoardExists() {
+        try {
+            Player.class.getDeclaredField("board");
+        } catch (NoSuchFieldException e) {
+            Assert.state(
+                    false,
+                    "Player variable board does not exist"
+            );
+        }
+    }
+
+    @Test
     void MethodPickALetterExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
