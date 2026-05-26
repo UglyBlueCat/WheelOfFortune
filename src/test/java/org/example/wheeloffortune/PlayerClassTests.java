@@ -122,6 +122,30 @@ public class PlayerClassTests {
     }
 
     @Test
+    void MethodGetBoardExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("getBoard");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getBoard() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetBoardExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("setBoard", Board.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setBoard() method does not exist");
+        }
+    }
+
+    @Test
     void MethodPickALetterExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
