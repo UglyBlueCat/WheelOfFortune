@@ -146,6 +146,16 @@ public class PlayerClassTests {
     }
 
     @Test
+    void VariableBoardInstantiated() {
+        final Player player = new Player();
+        final Board board = player.getBoard();
+        Assert.state(
+                board != null,
+                "Player.board is not instantiated when Player is instantiated"
+        );
+    }
+
+    @Test
     void MethodPickALetterExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
