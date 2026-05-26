@@ -1,8 +1,12 @@
 package org.example.wheeloffortune;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Player {
     public String name;
     public Integer currentPoints;
+
+    @Autowired
     public Board board;
 
     /**
