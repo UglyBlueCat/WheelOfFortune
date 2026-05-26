@@ -24,8 +24,8 @@ public class Player {
         return board.checkLetter(c);
     }
 
-    public boolean guessThePhrase(String phrase) {
-        return true;
+    public boolean guessThePhrase(Board board, String phrase) {
+        return board.checkPhrase(phrase);
     }
 
     public void startGame() {

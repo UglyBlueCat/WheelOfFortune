@@ -131,8 +131,9 @@ public class PlayerClassTests {
     void MethodGuessThePhraseExists() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
-            Class[] cArg = new Class[1];
-            cArg[0] = String.class;
+            Class<?>[] cArg = new Class[2];
+            cArg[0] = Board.class;
+            cArg[1] = String.class;
             player.getMethod("guessThePhrase", cArg);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -145,8 +146,9 @@ public class PlayerClassTests {
     void MethodGuessThePhraseReturnsBoolean() {
         try {
             Class<?> player = Class.forName("org.example.wheeloffortune.Player");
-            Class[] cArg = new Class[1];
-            cArg[0] = String.class;
+            Class<?>[] cArg = new Class[2];
+            cArg[0] = Board.class;
+            cArg[1] = String.class;
             Method playerGuessThePhrase = player.getMethod("guessThePhrase", cArg);
             AnnotatedType methodAnnotatedReturnType = playerGuessThePhrase.getAnnotatedReturnType();
             Type methodReturnType = methodAnnotatedReturnType.getType();
@@ -161,6 +163,24 @@ public class PlayerClassTests {
         } catch (NoSuchMethodException e) {
             Assert.state(false,"guessThePhrase() method does not exist");
         }
+    }
+
+    @Test
+    void CheckGuessThePhraseMethodReturnsCorrectBoolean() {
+        final Board board = new Board();
+        final String correctTestingPhrase = "Test phrase";
+        final String incorrectTestingPhrase = "Not "+correctTestingPhrase;
+        board.setPhrase(correctTestingPhrase);
+        final Player player = new Player();
+
+        Assert.state(
+                player.guessThePhrase(board, correctTestingPhrase),
+                "Player.guessThePhrase returned false when guessed phrase was correct"
+        );
+        Assert.state(
+                !player.guessThePhrase(board, incorrectTestingPhrase),
+                "Player.guessThePhrase returned true when guessed phrase was incorrect"
+        );
     }
 
     @Test
