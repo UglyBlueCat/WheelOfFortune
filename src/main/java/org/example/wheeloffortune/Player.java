@@ -3,7 +3,7 @@ package org.example.wheeloffortune;
 public class Player {
     public String name;
     public Integer currentPoints;
-    public Object board;
+    public Board board;
 
     /**
      * When the player picks a letter:
