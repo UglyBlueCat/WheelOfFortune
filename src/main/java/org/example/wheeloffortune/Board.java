@@ -87,19 +87,19 @@ public class Board {
         this.generatePhrase();
     }
 
-    void setPhrase(String s) {
+    public void setPhrase(String s) {
         this.phrase = s;
     }
 
-    void setAnonymisedPhrase(char[] c) {
+    public void setAnonymisedPhrase(char[] c) {
         this.anonymisedPhrase = c;
     }
 
-    void setGuessedLetters(Set<Character> s) {
+    public void setGuessedLetters(Set<Character> s) {
         this.guessedLetters = s;
     }
 
-    String getPhrase() {
+    public String getPhrase() {
         return this.phrase;
     }
 
