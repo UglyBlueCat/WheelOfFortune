@@ -187,6 +187,72 @@ public class BoardClassTests {
     }
 
     @Test
+    void variableGetSetPlayersGetsAndSets() {
+        final List<String> samplePlayers = Arrays.asList("Jimmy McJimmy", "Bill McWilliams");
+        final Board board = new Board();
+        board.setPlayers(samplePlayers);
+        Assert.state(
+                samplePlayers.equals(board.getPlayers()),
+                "The value set by Board.setPlayers() was not the same as the value then returned by Board.getPlayers()"
+        );
+    }
+
+    @Test
+    void variableGetSetPhraseGetsAndSets() {
+        final String samplePhrase = "This is a test phrase";
+        final Board board = new Board();
+        board.setPhrase(samplePhrase);
+        Assert.state(
+                samplePhrase.equals(board.getPhrase()),
+                "The value set by Board.setPhrase() was not the same as the value then returned by Board.getPhrase()"
+        );
+    }
+
+    @Test
+    void variableGetSetAnonymisedPhraseGetsAndSets() {
+        final char[] sampleAnonymisedPhrase = {'*', 'e', '*', '*', ' ', '*', '*', '*', 'a', '*', 'e'};
+        final Board board = new Board();
+        board.setAnonymisedPhrase(sampleAnonymisedPhrase);
+        Assert.state(
+                Arrays.equals(sampleAnonymisedPhrase, board.getAnonymisedPhrase()),
+                "The value set by Board.setAnonymisedPhrase() was not the same as the value then returned by Board.getAnonymisedPhrase()"
+        );
+    }
+
+    @Test
+    void variableGetSetGuessedLettersGetsAndSets() {
+        final Set<Character> sampleGuessedLetters = Set.of('a', 'e');
+        final Board board = new Board();
+        board.setGuessedLetters(sampleGuessedLetters);
+        Assert.state(
+                sampleGuessedLetters.equals(board.getGuessedLetters()),
+                "The value set by Board.setGuessedLetters() was not the same as the value then returned by Board.getGuessedLetters()"
+        );
+    }
+
+    @Test
+    void variableGetSetTableOfPhrasesGetsAndSets() {
+        final List<String> sampleTableOfPhrases = List.of(new String[]{
+                "A Blessing in Disguise",
+                "Best Seat in the House",
+                "Once in a Blue Moon",
+                "Right Place at the Right Time",
+                "The Early Bird Gets the Worm",
+                "A Piece of Cake",
+                "Living the Dream",
+                "Back to the Drawing Board",
+                "A Breath of Fresh Air",
+                "Making Memories Together"
+        });
+        final Board board = new Board();
+        board.setTableOfPhrases(sampleTableOfPhrases);
+        Assert.state(
+                sampleTableOfPhrases.equals(board.getTableOfPhrases()),
+                "The value set by Board.setTableOfPhrases() was not the same as the value then returned by Board.getTableOfPhrases()"
+        );
+    }
+
+    @Test
     void TableOfPhrasesExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
