@@ -67,6 +67,126 @@ public class BoardClassTests {
     }
 
     @Test
+    void MethodGetPlayersExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getPlayers");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getPlayers() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetPlayersExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setPlayers", List.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setPlayers() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetPhraseExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getPhrase");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getPhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetPhraseExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setPhrase", String.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setPhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetAnonymisedPhraseExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getAnonymisedPhrase");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getAnonymisedPhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetAnonymisedPhraseExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setAnonymisedPhrase", Arrays.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setAnonymisedPhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetGuessedLettersExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getGuessedLetters");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getGuessedLetters() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetGuessedLettersExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setGuessedLetters", Set.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setGuessedLetters() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetTableOfPhrasesExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getTableOfPhrases");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getTableOfPhrases() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetTableOfPhrasesExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setTableOfPhrases", List.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setTableOfPhrases() method does not exist");
+        }
+    }
+
+    @Test
     void TableOfPhrasesExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
