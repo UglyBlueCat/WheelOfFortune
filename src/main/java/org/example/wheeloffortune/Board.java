@@ -1,5 +1,7 @@
 package org.example.wheeloffortune;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.random.RandomGenerator;
 
+@Component
 public class Board {
     public List<String> players;
     private String phrase;
