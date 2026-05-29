@@ -118,4 +118,12 @@ public class Board {
     public void setTableOfPhrases(List<String> tableOfPhrases) {
         this.tableOfPhrases = tableOfPhrases;
     }
+
+    public List<String> getPlayers() {
+        return this.players;
+    }
+
+    public void setPlayers(List<String> players) {
+        this.players = players;
+    }
 }
