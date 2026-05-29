@@ -11,7 +11,7 @@ public class Board {
     private String phrase;
     private char[] anonymisedPhrase;
     private Set<Character> guessedLetters;
-    private final List<String> tableOfPhrases = List.of(new String[]{
+    private List<String> tableOfPhrases = List.of(new String[]{
             "A Blessing in Disguise",
             "Best Seat in the House",
             "Once in a Blue Moon",
@@ -113,5 +113,9 @@ public class Board {
 
     public List<String> getTableOfPhrases() {
         return this.tableOfPhrases;
+    }
+
+    public void setTableOfPhrases(List<String> tableOfPhrases) {
+        this.tableOfPhrases = tableOfPhrases;
     }
 }
