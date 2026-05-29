@@ -130,7 +130,7 @@ public class BoardClassTests {
     void MethodSetAnonymisedPhraseExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
-            board.getMethod("setAnonymisedPhrase", Arrays.class);
+            board.getMethod("setAnonymisedPhrase", char[].class);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e) {
