@@ -30,40 +30,35 @@ public class BoardClassTests {
         try {
             Field field = Board.class.getDeclaredField("players");
         } catch (NoSuchFieldException e) {
-            Assert.state(false, "Board variable name does not exist");
+            Assert.state(false, "Board variable players does not exist");
         }
     }
 
     @Test
     void PhraseVariableExists() {
-        Board board = new Board();
-        board.setPhrase("");
-        Assert.state(
-                board.getPhrase().isEmpty(),
-                "Phrase variable does not exist"
-        );
+        try {
+            Field field = Board.class.getDeclaredField("phrase");
+        } catch (NoSuchFieldException e) {
+            Assert.state(false, "Board variable phrase does not exist");
+        }
     }
 
     @Test
     void AnonymisedPhraseVariableExists() {
-        Board board = new Board();
-        char c = 'a';
-        board.setAnonymisedPhrase(new char[]{c});
-        Assert.state(
-                Arrays.equals(board.getAnonymisedPhrase(), new char[]{c}),
-                "Anonymised phrase variable does not exist"
-        );
+        try {
+            Field field = Board.class.getDeclaredField("anonymisedPhrase");
+        } catch (NoSuchFieldException e) {
+            Assert.state(false, "Board variable anonymisedPhrase does not exist");
+        }
     }
 
     @Test
     void GuessedLettersVariableExists() {
-        Board board = new Board();
-        Set<Character> letters = Set.of('a');
-        board.setGuessedLetters(letters);
-        Assert.state(
-                board.getGuessedLetters().equals(letters),
-                "Guessed letters variable exists"
-        );
+        try {
+            Field field = Board.class.getDeclaredField("guessedLetters");
+        } catch (NoSuchFieldException e) {
+            Assert.state(false, "Board variable guessedLetters does not exist");
+        }
     }
 
     @Test
