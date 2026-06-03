@@ -1,6 +1,7 @@
 package org.example.wheeloffortune;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
@@ -12,6 +13,8 @@ import java.util.*;
 @SpringBootTest
 public class BoardClassTests {
 
+    @Autowired
+    Board autowiredBoard;
 
     @Test
     void BoardClassExists() {
@@ -296,6 +299,14 @@ public class BoardClassTests {
                         Arrays.toString(anonymisedPhrase) +
                         " when it should be set to: " +
                         Arrays.toString(correctlyAnonymisedPhrase)
+        );
+    }
+
+    @Test
+    void BoardClassCanBeAutowired() {
+        Assert.notNull(
+                autowiredBoard,
+                "Board was not resolved by @Autowired"
         );
     }
 }
