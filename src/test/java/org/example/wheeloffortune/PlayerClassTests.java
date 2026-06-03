@@ -1,6 +1,7 @@
 package org.example.wheeloffortune;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
@@ -12,6 +13,9 @@ import java.util.Objects;
 
 @SpringBootTest
 public class PlayerClassTests {
+
+    @Autowired
+    Player autowiredPlayer;
 
     @Test
     void ClassPlayerExists() {
@@ -147,10 +151,16 @@ public class PlayerClassTests {
 
     @Test
     void VariableBoardInstantiated() {
-        final Player player = new Player();
-        final Board board = player.getBoard();
-        Assert.state(
-                board != null,
+
+        Assert.notNull(
+                autowiredPlayer,
+                "Player is not instantiated"
+        );
+
+        final Board board = autowiredPlayer.getBoard();
+
+        Assert.notNull(
+                board,
                 "Player.board is not instantiated when Player is instantiated"
         );
     }
