@@ -30,39 +30,220 @@ public class BoardClassTests {
         try {
             Field field = Board.class.getDeclaredField("players");
         } catch (NoSuchFieldException e) {
-            Assert.state(false, "Board variable name does not exist");
+            Assert.state(false, "Board variable players does not exist");
         }
     }
 
     @Test
     void PhraseVariableExists() {
-        Board board = new Board();
-        board.setPhrase("");
-        Assert.state(
-                board.getPhrase().isEmpty(),
-                "Phrase variable does not exist"
-        );
+        try {
+            Field field = Board.class.getDeclaredField("phrase");
+        } catch (NoSuchFieldException e) {
+            Assert.state(false, "Board variable phrase does not exist");
+        }
     }
 
     @Test
     void AnonymisedPhraseVariableExists() {
-        Board board = new Board();
-        char c = 'a';
-        board.setAnonymisedPhrase(new char[]{c});
-        Assert.state(
-                Arrays.equals(board.getAnonymisedPhrase(), new char[]{c}),
-                "Anonymised phrase variable does not exist"
-        );
+        try {
+            Field field = Board.class.getDeclaredField("anonymisedPhrase");
+        } catch (NoSuchFieldException e) {
+            Assert.state(false, "Board variable anonymisedPhrase does not exist");
+        }
     }
 
     @Test
     void GuessedLettersVariableExists() {
-        Board board = new Board();
-        Set<Character> letters = Set.of('a');
-        board.setGuessedLetters(letters);
+        try {
+            Field field = Board.class.getDeclaredField("guessedLetters");
+        } catch (NoSuchFieldException e) {
+            Assert.state(false, "Board variable guessedLetters does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetPlayersExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getPlayers");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getPlayers() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetPlayersExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setPlayers", List.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setPlayers() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetPhraseExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getPhrase");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getPhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetPhraseExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setPhrase", String.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setPhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetAnonymisedPhraseExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getAnonymisedPhrase");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getAnonymisedPhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetAnonymisedPhraseExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setAnonymisedPhrase", char[].class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setAnonymisedPhrase() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetGuessedLettersExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getGuessedLetters");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getGuessedLetters() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetGuessedLettersExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setGuessedLetters", Set.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setGuessedLetters() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodGetTableOfPhrasesExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("getTableOfPhrases");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getTableOfPhrases() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetTableOfPhrasesExists() {
+        try {
+            Class<?> board = Class.forName("org.example.wheeloffortune.Board");
+            board.getMethod("setTableOfPhrases", List.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setTableOfPhrases() method does not exist");
+        }
+    }
+
+    @Test
+    void variableGetSetPlayersGetsAndSets() {
+        final List<String> samplePlayers = Arrays.asList("Jimmy McJimmy", "Bill McWilliams");
+        final Board board = new Board();
+        board.setPlayers(samplePlayers);
         Assert.state(
-                board.getGuessedLetters().equals(letters),
-                "Guessed letters variable exists"
+                samplePlayers.equals(board.getPlayers()),
+                "The value set by Board.setPlayers() was not the same as the value then returned by Board.getPlayers()"
+        );
+    }
+
+    @Test
+    void variableGetSetPhraseGetsAndSets() {
+        final String samplePhrase = "This is a test phrase";
+        final Board board = new Board();
+        board.setPhrase(samplePhrase);
+        Assert.state(
+                samplePhrase.equals(board.getPhrase()),
+                "The value set by Board.setPhrase() was not the same as the value then returned by Board.getPhrase()"
+        );
+    }
+
+    @Test
+    void variableGetSetAnonymisedPhraseGetsAndSets() {
+        final char[] sampleAnonymisedPhrase = {'*', 'e', '*', '*', ' ', '*', '*', '*', 'a', '*', 'e'};
+        final Board board = new Board();
+        board.setAnonymisedPhrase(sampleAnonymisedPhrase);
+        Assert.state(
+                Arrays.equals(sampleAnonymisedPhrase, board.getAnonymisedPhrase()),
+                "The value set by Board.setAnonymisedPhrase() was not the same as the value then returned by Board.getAnonymisedPhrase()"
+        );
+    }
+
+    @Test
+    void variableGetSetGuessedLettersGetsAndSets() {
+        final Set<Character> sampleGuessedLetters = Set.of('a', 'e');
+        final Board board = new Board();
+        board.setGuessedLetters(sampleGuessedLetters);
+        Assert.state(
+                sampleGuessedLetters.equals(board.getGuessedLetters()),
+                "The value set by Board.setGuessedLetters() was not the same as the value then returned by Board.getGuessedLetters()"
+        );
+    }
+
+    @Test
+    void variableGetSetTableOfPhrasesGetsAndSets() {
+        final List<String> sampleTableOfPhrases = List.of(new String[]{
+                "A Blessing in Disguise",
+                "Best Seat in the House",
+                "Once in a Blue Moon",
+                "Right Place at the Right Time",
+                "The Early Bird Gets the Worm",
+                "A Piece of Cake",
+                "Living the Dream",
+                "Back to the Drawing Board",
+                "A Breath of Fresh Air",
+                "Making Memories Together"
+        });
+        final Board board = new Board();
+        board.setTableOfPhrases(sampleTableOfPhrases);
+        Assert.state(
+                sampleTableOfPhrases.equals(board.getTableOfPhrases()),
+                "The value set by Board.setTableOfPhrases() was not the same as the value then returned by Board.getTableOfPhrases()"
         );
     }
 

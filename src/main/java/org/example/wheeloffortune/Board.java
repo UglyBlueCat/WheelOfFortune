@@ -3,7 +3,6 @@ package org.example.wheeloffortune;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.random.RandomGenerator;
 
@@ -12,7 +11,7 @@ public class Board {
     private String phrase;
     private char[] anonymisedPhrase;
     private Set<Character> guessedLetters;
-    private final List<String> tableOfPhrases = List.of(new String[]{
+    private List<String> tableOfPhrases = List.of(new String[]{
             "A Blessing in Disguise",
             "Best Seat in the House",
             "Once in a Blue Moon",
@@ -88,19 +87,19 @@ public class Board {
         this.generatePhrase();
     }
 
-    void setPhrase(String s) {
+    public void setPhrase(String s) {
         this.phrase = s;
     }
 
-    void setAnonymisedPhrase(char[] c) {
+    public void setAnonymisedPhrase(char[] c) {
         this.anonymisedPhrase = c;
     }
 
-    void setGuessedLetters(Set<Character> s) {
+    public void setGuessedLetters(Set<Character> s) {
         this.guessedLetters = s;
     }
 
-    String getPhrase() {
+    public String getPhrase() {
         return this.phrase;
     }
 
@@ -114,5 +113,17 @@ public class Board {
 
     public List<String> getTableOfPhrases() {
         return this.tableOfPhrases;
+    }
+
+    public void setTableOfPhrases(List<String> tableOfPhrases) {
+        this.tableOfPhrases = tableOfPhrases;
+    }
+
+    public List<String> getPlayers() {
+        return this.players;
+    }
+
+    public void setPlayers(List<String> players) {
+        this.players = players;
     }
 }
