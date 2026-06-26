@@ -321,7 +321,7 @@ public class BoardClassTests {
     void ConfirmCheckPhraseMethodExists() {
         try {
             Class<?> board = Class.forName("org.example.wheeloffortune.Board");
-            board.getMethod("checkPhrase");
+            board.getMethod("checkPhrase", String.class);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e) {
