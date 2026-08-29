@@ -1,8 +1,15 @@
 package org.example.wheeloffortune;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Player {
     public String name;
     public Integer currentPoints;
+
+    @Autowired
+    public Board board;
 
     /**
      * When the player picks a letter:
@@ -55,4 +62,13 @@ public class Player {
     public void setCurrentPoints(Integer currentPoints) {
         this.currentPoints = currentPoints;
     }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
 }

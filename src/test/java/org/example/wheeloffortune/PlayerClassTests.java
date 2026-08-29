@@ -1,6 +1,7 @@
 package org.example.wheeloffortune;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
@@ -12,6 +13,9 @@ import java.util.Objects;
 
 @SpringBootTest
 public class PlayerClassTests {
+
+    @Autowired
+    Player autowiredPlayer;
 
     @Test
     void ClassPlayerExists() {
@@ -87,6 +91,78 @@ public class PlayerClassTests {
                     "Player variable currentPoints does not exist"
             );
         }
+    }
+
+    @Test
+    void VariableBoardExists() {
+        try {
+            Player.class.getDeclaredField("board");
+        } catch (NoSuchFieldException e) {
+            Assert.state(
+                    false,
+                    "Player variable board does not exist"
+            );
+        }
+    }
+
+    @Test
+    void VariableBoardIsBoard() {
+        try {
+            Field field = Player.class.getDeclaredField("board");
+            AnnotatedType fieldAnnotatedType = field.getAnnotatedType();
+            Type fieldType = fieldAnnotatedType.getType();
+            String fieldTypeName = fieldType.getTypeName();
+
+            Assert.state(
+                    Objects.equals(fieldTypeName, "org.example.wheeloffortune.Board"),
+                    String.format("board field Type should be org.example.wheeloffortune.Board but is actually %s", fieldTypeName)
+            );
+        } catch (NoSuchFieldException e) {
+            Assert.state(
+                    false,
+                    "Player variable board does not exist"
+            );
+        }
+    }
+
+    @Test
+    void MethodGetBoardExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("getBoard");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"getBoard() method does not exist");
+        }
+    }
+
+    @Test
+    void MethodSetBoardExists() {
+        try {
+            Class<?> player = Class.forName("org.example.wheeloffortune.Player");
+            player.getMethod("setBoard", Board.class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            Assert.state(false,"setBoard() method does not exist");
+        }
+    }
+
+    @Test
+    void VariableBoardInstantiated() {
+
+        Assert.notNull(
+                autowiredPlayer,
+                "Player is not instantiated"
+        );
+
+        final Board board = autowiredPlayer.getBoard();
+
+        Assert.notNull(
+                board,
+                "Player.board is not instantiated when Player is instantiated"
+        );
     }
 
     @Test
